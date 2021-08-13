@@ -6,3 +6,6 @@ The purpose of this repository is to use the Raspberrypi to measure temperature,
 気温、湿度はDHT11を用いて計測します。
 コードは[こちら](https://github.com/szazo/DHT11_Python)を参考に書いています。
 The code is written with reference to [here](https://github.com/szazo/DHT11_Python).
+GND:6pin
+DATA:8pin
+VCC:2pin
