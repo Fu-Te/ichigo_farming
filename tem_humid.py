@@ -2,7 +2,7 @@ import RPi.GPIO as GPIO
 import dht11
 import time
 import datetime
-
+import csv
 # initialize GPIO
 GPIO.setwarnings(True)
 GPIO.setmode(GPIO.BCM)
@@ -18,6 +18,8 @@ try:
 
 	        print("Temperature: %-3.1f C" % result.temperature)
 	        print("Humidity: %-3.1f %%" % result.humidity)
+
+			
 
 	    time.sleep(6)
 
