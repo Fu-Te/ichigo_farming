@@ -20,6 +20,7 @@ try:
 	        print("Humidity: %-3.1f %%" % result.humidity)
 			
 		#write temperature and humidity to csv file for gathering data.
+		#inconsistent use od tabs and spaces in indentation, error occured
 			with open('tem_humid.csv','a') as file_write:
 				writer=csv.writer(file_write)
 				writer.writerow([str(datetime.datetime.now()),result.temperature,result.humidity])	
