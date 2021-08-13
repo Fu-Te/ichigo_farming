@@ -20,8 +20,8 @@ try:
 	        print("Humidity: %-3.1f %%" % result.humidity)
 			
 		#write temperature and humidity to csv file for gathering data.
-			with open('tem_humid.csv','a') as f:
-				writer=csv.writer(f)
+			with open('tem_humid.csv','a') as file_write:
+				writer=csv.writer(file_write)
 				writer.writerow([str(datetime.datetime.now()),result.temperature,result.humidity])	
 
 	    time.sleep(6)
