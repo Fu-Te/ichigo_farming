@@ -11,6 +11,7 @@ GPIO.setmode(GPIO.BCM)
 instance = dht11.DHT11(pin=14)
 	
 
+
 try:
 	while True:
 	    result = instance.read()
