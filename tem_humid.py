@@ -30,7 +30,6 @@ except KeyboardInterrupt:
 
 
 #write temperature and humidity to csv file for gathering data.
-with open('tem_humid.csv','a') as file_write:
-	writer=csv.writer(file_write)
-	writer.writerow('/n')
+with open('tem_humid.csv','a',newline='') as file_write:
+	writer=csv.writer(file_write,lineterminator='\n')
 	writer.writerow([datetime.datetime.now(),result.temperature,result.humidity])
