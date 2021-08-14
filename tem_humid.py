@@ -10,7 +10,10 @@ GPIO.setmode(GPIO.BCM)
 # read data using pin 14
 instance = dht11.DHT11(pin=14)
 	
-
+		#write temperature and humidity to csv file for gathering data.
+with open('tem_humid.csv','a') as file_write:
+	writer=csv.writer(file_write)
+	writer.writerow([str(datetime.datetime.now()),result.temperature,result.humidity])
 
 try:
 	while True:
@@ -22,11 +25,13 @@ try:
 	        print("Humidity: %-3.1f %%" % result.humidity)
 
 
+
 	    time.sleep(6)
 
 except KeyboardInterrupt:
     print("Cleanup")
     GPIO.cleanup()
+
 
 #write temperature and humidity to csv file for gathering data.
 with open('tem_humid.csv','a') as file_write:
