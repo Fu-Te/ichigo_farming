@@ -18,7 +18,10 @@ try:
 
 	        print("Temperature: %-3.1f C" % result.temperature)
 	        print("Humidity: %-3.1f %%" % result.humidity)
-
+		#write temperature and humidity to csv file for gathering data.
+			with open('tem_humid.csv','a',newline='') as file_write:
+				writer=csv.writer(file_write,lineterminator='\n')
+				writer.writerow([datetime.datetime.now(),result.temperature,result.humidity])
 
 
 	    time.sleep(6)
@@ -28,8 +31,3 @@ except KeyboardInterrupt:
     print("Cleanup")
     GPIO.cleanup()
 
-
-#write temperature and humidity to csv file for gathering data.
-with open('tem_humid.csv','a',newline='') as file_write:
-	writer=csv.writer(file_write,lineterminator='\n')
-	writer.writerow([datetime.datetime.now(),result.temperature,result.humidity])
