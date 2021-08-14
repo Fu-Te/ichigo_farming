@@ -19,6 +19,9 @@ try:
 
 	        print("Temperature: %-3.1f C" % result.temperature)
 	        print("Humidity: %-3.1f %%" % result.humidity)
+
+
+			
 			with open('tem_humid.csv','a') as file_write:
 				writer=csv.writer(file_write)
 				writer.writerow([str(datetime.datetime.now()),result.temperature,result.humidity])
