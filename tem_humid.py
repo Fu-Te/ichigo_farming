@@ -32,4 +32,4 @@ except KeyboardInterrupt:
 #write temperature and humidity to csv file for gathering data.
 with open('tem_humid.csv','a') as file_write:
 	writer=csv.writer(file_write)
-	writer.writerow([str(datetime.datetime.now()),result.temperature,result.humidity])
+	writer.writerow([datetime.datetime.now(),result.temperature,result.humidity])
