@@ -23,9 +23,7 @@ try:
 			writer=csv.writer(f,lineterminator='\n')
 			writer.writerow([datetime.datetime.now(),result.temperature,result.humidity])
 
-
 	    time.sleep(6)
-
 
 except KeyboardInterrupt:
     print("Cleanup")
