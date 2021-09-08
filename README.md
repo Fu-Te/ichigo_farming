@@ -9,3 +9,7 @@ The code is written with reference to [here](https://github.com/szazo/DHT11_Pyth
 GND:6pin
 DATA:8pin
 VCC:2pin
+
+これからはユーザから要請があったときにcsvファイルを送信する方法
+１時間ごとにcsvファイルをメイン機に送信する機能
+異常なデータがとれた際にデータを送信する方法
