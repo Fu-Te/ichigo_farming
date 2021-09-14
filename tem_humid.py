@@ -3,12 +3,16 @@ import dht11
 import time
 import datetime
 import csv
+import ambient
 # initialize GPIO
 GPIO.setwarnings(True)
 GPIO.setmode(GPIO.BCM)
 
 # read data using pin 14
 instance = dht11.DHT11(pin=14)
+
+#setting ambient 
+am = ambient.Ambient(100,'1370f2641934c210')
 
 try:
 	while True:
@@ -27,9 +31,6 @@ try:
 		time.sleep(6)
 
 
-#気温が三十度以上もしくは十度以下になった場合に本機へBLE経由でデータを送信する．
-		if result.temperature>=30 or result.temperature<=10:
-			
 except KeyboardInterrupt:
 	print("Cleanup")
 	GPIO.cleanup()
