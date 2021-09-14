@@ -24,7 +24,7 @@ try:
 			print("Humidity: %-3.1f %%" % result.humidity)
 
 			#send data to ambient     
-			r=ambi.send({"d1":result.temperature,"d2":result.humidity})
+			r=ambi.send({"temp":result.temperature,"humid":result.humidity})
 			print('ambiへ送信')
 		#write temperature and humidity to csv file for gathering data	
 		with open('tem_humid.csv','a',newline='') as f:
