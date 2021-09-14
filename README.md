@@ -15,6 +15,8 @@ VCC:2pin
 異常なデータがとれた際にデータを送信する方法
 ambientを使ってデータをクラウドに送信し，グラフ化
 
+[bluepy](https://github.com/IanHarvey/bluepy)
+
 # 使い方
 raspberrypi上で
 
