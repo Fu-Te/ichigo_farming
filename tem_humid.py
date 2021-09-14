@@ -12,7 +12,7 @@ GPIO.setmode(GPIO.BCM)
 instance = dht11.DHT11(pin=14)
 
 #setting ambient 
-am = ambient.Ambient(41560,'1370f2641934c210')
+ambi = ambient.Ambient(41560,'1370f2641934c210')
 
 try:
 	while True:
@@ -24,7 +24,7 @@ try:
 			print("Humidity: %-3.1f %%" % result.humidity)
 
 			#send data to ambient     
-			r=am.send({"d1":datetime.datetime.now, "d2":result.temperature,'d3':result.humidity})
+			r=ambi.send({"d1":result.temperature,"d2":result.humidity})
 		#write temperature and humidity to csv file for gathering data	
 		with open('tem_humid.csv','a',newline='') as f:
 			writer=csv.writer(f,lineterminator='\n')
