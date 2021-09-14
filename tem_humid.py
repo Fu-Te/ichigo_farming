@@ -29,7 +29,7 @@ try:
 
 #気温が三十度以上もしくは十度以下になった場合に本機へBLE経由でデータを送信する．
 		if result.temperature>=30 or result.temperature<=10:
-    			
+			
 except KeyboardInterrupt:
 	print("Cleanup")
 	GPIO.cleanup()

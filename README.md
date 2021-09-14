@@ -13,3 +13,25 @@ VCC:2pin
 これからはユーザから要請があったときにcsvファイルを送信する方法
 １時間ごとにcsvファイルをメイン機に送信する機能
 異常なデータがとれた際にデータを送信する方法
+ambientを使ってデータをクラウドに送信し，グラフ化
+
+# 使い方
+raspberrypi上で
+
+```
+$ git clone https://github.com/Fu-Te/ichigo_farming.git
+```
+次にディレクトリ移動
+```
+$ cd ichigo_farming
+```
+必要なものを入れる
+```
+$ pip install dht11 bluepy
+```
+```
+$ sudo apt-get install libglib2.0-dev
+```
+```
+$ pip install git+https://github.com/AmbientDataInc/ambient-python-lib.git
+```
