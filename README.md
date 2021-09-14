@@ -16,6 +16,8 @@ VCC:2pin
 ambientを使ってデータをクラウドに送信し，グラフ化
 
 [bluepy](https://github.com/IanHarvey/bluepy)
+bluetoothでの通信はbluepyを用いる
+
 
 # 使い方
 raspberrypi上で
