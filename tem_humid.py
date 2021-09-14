@@ -12,7 +12,7 @@ GPIO.setmode(GPIO.BCM)
 instance = dht11.DHT11(pin=14)
 
 #setting ambient 
-ambi = ambient.Ambient(41560,'1370f2641934c210')
+ambi = ambient.Ambient(41563,'ba0c12f7851e4dad')
 
 try:
 	while True:
