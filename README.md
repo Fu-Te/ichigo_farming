@@ -13,6 +13,7 @@ UUIDという識別子があって，それを指定することでセントラ�
 セントラルがペリフェラルに対して接続要求をし，ペリフェラルからセントラルへ接続確立，データのやりとりをする．接続を終了する際はセントラルからペリフェラルへ接続切断をしらせる．
 
 https://tomosoft.jp/design/?p=41722
+https://www.denshi.club/cookbook/sensor/co2/co210ble.html
 
 [参考](https://houwa-js.co.jp/2018/06/20180629/)
 # 気温、湿度
@@ -53,4 +54,13 @@ $ sudo apt-get install libglib2.0-dev
 ```
 ```
 $ pip install git+https://github.com/AmbientDataInc/ambient-python-lib.git
+```
+```
+$ cd bluepy
+```
+```
+$ python setup.py build
+```
+```
+sudo python setup.py install 
 ```
