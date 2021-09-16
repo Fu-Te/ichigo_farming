@@ -60,4 +60,5 @@ $ pip install git+https://github.com/AmbientDataInc/ambient-python-lib.git
 ```
 $ sudo python3 scan.py 
 ```
+アドバタイジングしているBLEペリフェラルを探し，見つけ，Device Addrをメモしておく．
 
