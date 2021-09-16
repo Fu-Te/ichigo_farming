@@ -56,3 +56,8 @@ $ sudo apt-get install libglib2.0-dev
 $ pip install git+https://github.com/AmbientDataInc/ambient-python-lib.git
 ```
 
+以下のコマンドでBLEペリフェラルを探す
+```
+$ sudo python3 scan.py 
+```
+
