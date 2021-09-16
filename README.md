@@ -55,12 +55,4 @@ $ sudo apt-get install libglib2.0-dev
 ```
 $ pip install git+https://github.com/AmbientDataInc/ambient-python-lib.git
 ```
-```
-$ cd bluepy
-```
-```
-$ python setup.py build
-```
-```
-sudo python setup.py install 
-```
+
