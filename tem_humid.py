@@ -1,3 +1,4 @@
+#データ取得，データ送信のためのコード
 import RPi.GPIO as GPIO
 import dht11
 import time
