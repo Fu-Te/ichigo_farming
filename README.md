@@ -54,14 +54,16 @@ $ cd ichigo_farming
 ```
 必要なものを入れる
 ```
-$ pip install dht11 bluepy
-```
-```
 $ sudo apt-get install libglib2.0-dev
 ```
 ```
 $ pip install git+https://github.com/AmbientDataInc/ambient-python-lib.git
 ```
+次のコマンドで仮想環境に入ります．それによってpip等でインストールする手間を省ける（多分
+```
+$ source venv/bin/activate
+```
+
 
 以下のコマンドでBLEペリフェラルを探す(central上で実行)
 ```
