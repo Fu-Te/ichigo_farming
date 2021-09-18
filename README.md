@@ -118,22 +118,22 @@ On raspberrypi
 
 ```
 $ git clone https://github.com/Fu-Te/ichigo_farming.git
-``` $ git clone
+```
 Then move the directory
-``` $ cd ichigo_farming
+```
 $ cd ichigo_farming
 ```
 Put in what you need.
-``` $ sudo apt-get install libglib2.0-dev
+```
 $ sudo apt-get install libglib2.0-dev
-``` $ sudo apt-get install libglib2.0-dev
+```
 ```
 $ pip install git+https://github.com/AmbientDataInc/ambient-python-lib.git
-``` $ sudo apt-get install libglib2.0-dev
+```
 The following command enters the virtual environment. It will save you the trouble of installing it with pip (maybe).
-``` $ source venv/bin/activate
+```
 $ source venv/bin/activate
-``` $ source venv/bin/activate
+```
 
 
 Find the BLE peripheral with the following command (run on central)
