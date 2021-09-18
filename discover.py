@@ -1,3 +1,4 @@
+#UUID文字列を探すためのコード
 import asyncio
 
 from bleak import discover
