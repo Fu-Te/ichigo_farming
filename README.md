@@ -141,8 +141,15 @@ $ source venv/bin/activate
 ```
 
 
-Find the BLE peripheral with the following command (run on central)
+Find the BLE peripheral addr with the following command (run on central)
 ```
-$ sudo python3 scan.py 
+$ sudo python3 discover.py
 ```
 Find and locate the BLE peripheral you are advertising, and note down the Device Addr.
+
+Replace the addr with the one you got before and then execute the following command to see if we can communicate.
+```
+$ sudo python3 explorer.py
+```
+
+That is it for now.
