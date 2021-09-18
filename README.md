@@ -66,12 +66,17 @@ $ source venv/bin/activate
 ```
 
 
-以下のコマンドでBLEペリフェラルを探す(central上で実行)
+以下のコマンドでBLEペリフェラルのアドレスを探す(central上で実行)
 ```
-$ sudo python3 scan.py 
+$ sudo python3 discover.py
 ```
 アドバタイジングしているBLEペリフェラルを探し，見つけ，Device Addrをメモしておく．
-
+explorer.pyのコードのアドレス部分を取得したアドレスに変更する．
+そして
+```
+$ python3 explorer.py
+```
+を実行し，通信できることを確認する．
 # English
 
 # How does BLE work in the first place?
