@@ -73,3 +73,71 @@ $ sudo python3 scan.py
 アドバタイジングしているBLEペリフェラルを探し，見つけ，Device Addrをメモしておく．
 
 # English
+
+# How does BLE work in the first place?
+In BLE communication, there are two types of roles, Central and Peripheral, and they communicate with each other.
+Central has the role of controlling the communication, and in BLE, data communication is performed by Central issuing requests to Peripheral. In general, the central is a smartphone or PC.
+Peripherals communicate in response to requests from the central. It does not have any function to control the communication.
+In other words, when you write code, you need to write two codes, one for the sending side (data acquisition, etc.) and one for the receiving side.
+There is an identifier called UUID, and by specifying it, the central can access the information in the peripheral.
+
+The central makes a connection request to the peripheral, the peripheral establishes a connection to the central, and data is exchanged. When the connection is terminated, the central sends a disconnection message to the peripheral.
+
+
+
+https://tomosoft.jp/design/?p=41722
+https://www.denshi.club/cookbook/sensor/co2/co210ble.html
+
+[Reference](https://houwa-js.co.jp/2018/06/20180629/)
+# Temperature and humidity
+The temperature and humidity are measured using DHT11.
+The code is written with reference to [here](https://github.com/szazo/DHT11_Python).
+The code is written with reference to [here](https://github.com/szazo/DHT11_Python).
+GND:6pin
+DATA:8pin
+VCC:2pin
+
+From now on, how to send a csv file when requested by the user
+Function to send csv file to the main unit every hour.
+How to send data when abnormal data is obtained.
+Send data to the cloud using ambient and graph it.
+
+[bluepy](https://github.com/IanHarvey/bluepy)
+Use bluepy to communicate via bluetooth
+Using bleak.
+There seems to be a way to use pybluez?
+Bleak seems to be better in that it can be used on all OS.
+If you want to use bleak, you should check the activities of the seminar so far.
+Slides from the second semester of the second year of the class
+
+
+
+
+# How to use
+On raspberrypi
+
+```
+$ git clone https://github.com/Fu-Te/ichigo_farming.git
+``` $ git clone
+Then move the directory
+``` $ cd ichigo_farming
+$ cd ichigo_farming
+```
+Put in what you need.
+``` $ sudo apt-get install libglib2.0-dev
+$ sudo apt-get install libglib2.0-dev
+``` $ sudo apt-get install libglib2.0-dev
+```
+$ pip install git+https://github.com/AmbientDataInc/ambient-python-lib.git
+``` $ sudo apt-get install libglib2.0-dev
+The following command enters the virtual environment. It will save you the trouble of installing it with pip (maybe).
+``` $ source venv/bin/activate
+$ source venv/bin/activate
+``` $ source venv/bin/activate
+
+
+Find the BLE peripheral with the following command (run on central)
+```
+$ sudo python3 scan.py 
+```
+Find and locate the BLE peripheral you are advertising, and note down the Device Addr.
