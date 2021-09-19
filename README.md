@@ -34,7 +34,7 @@ ambientを使ってデータをクラウドに送信し，グラフ化
 
 [bluepy](https://github.com/IanHarvey/bluepy)
 bluetoothでの通信はbluepyを用いる
-bleakを使う，
+[bleak](https://pypi.org/project/bleak/)を使う，
 pybluezを使う方法があるっぽい？
 全てのOSで使えるという点ではBleakがいいっぽい．
 bleakを使う場合はこれまでのゼミの活動をもう一度チェックしてみると楽に進むかも？
