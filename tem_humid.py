@@ -31,7 +31,7 @@ def store_data():
 	result = instance.read()
 	with open('tem_humid.csv','a',newline='') as f:
 		writer=csv.writer(f,lineterminator='\n')
-		writer.writerow([datatime.datetime.now(),result.temperature,result.humidity])
+		writer.writerow([datetime.datetime.now(),result.temperature,result.humidity])
 
 try:
 	while True:
