@@ -33,7 +33,7 @@ try:
 			writer.writerow([datetime.datetime.now(),result.temperature,result.humidity])
 
 
-		time.sleep(2)
+		time.sleep(6)
 
 
 except KeyboardInterrupt:

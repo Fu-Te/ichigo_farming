@@ -39,7 +39,7 @@ try:
 		send_ambi()
 		store_data()
 
-		time.sleep(2)
+		time.sleep(6)
 
 except KeyboardInterrupt:
 	print('Cleanup')
