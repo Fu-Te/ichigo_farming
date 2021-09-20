@@ -23,10 +23,12 @@ def take_temp_humid():
 		print('湿度: %-3.1f %%' % result.humidity)
 
 def send_ambi():
+	result = instance.read()
 	r=ambi.send({'d1':result.temperature, 'd2':result.humidity})
 	print('ambiへ送信')
 
 def store_data():
+	result = instance.read()
 	with open('tem_humid.csv','a',newline='') as f:
 		writer=csv.writer(f,lineterminator='\n')
 		writer.writerow([datatime.datetime.now(),result.temperature,result.humidity])
