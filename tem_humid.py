@@ -16,6 +16,7 @@ instance = dht11.DHT11(pin=14)
 ambi=ambient.Ambient(41563,'ba0c12f7851e4dad')
 
 def take_temp_humid():
+	global result
 	result = instance.read()
 	if result.is_valid():
 		if result.humidity != 0 or result.temperature != 0:
@@ -27,8 +28,6 @@ def take_temp_humid():
 			print('湿度温度取得失敗')
 
 def send_ambi():
-	result = instance.read()
-	
 	if result.humidity != 0 or result.temperature != 0:
 		r=ambi.send({'d1':result.temperature, 'd2':result.humidity})
 		print('ambiへ送信')
@@ -36,7 +35,6 @@ def send_ambi():
 		print('温度湿度取得失敗したため送信しません．')
 
 def store_data():
-	result = instance.read()
 	with open('tem_humid.csv','a',newline='') as f:
 		if result.humidity != 0 or result.temperature != 0:
 			writer=csv.writer(f,lineterminator='\n')
