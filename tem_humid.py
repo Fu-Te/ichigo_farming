@@ -16,6 +16,7 @@ instance = dht11.DHT11(pin=14)
 ambi=ambient.Ambient(41563,'ba0c12f7851e4dad')
 
 def take_temp_humid():
+	#グローバル関数にすることで他の関数内でも利用可能，変数(result.temperature,result.humidityが変化するように．)
 	global result
 	result = instance.read()
 	if result.is_valid():
