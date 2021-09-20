@@ -17,7 +17,7 @@ ambi=ambient.Ambient(41563,'ba0c12f7851e4dad')
 
 def take_temp_humid():
 	result = instance.read()
-	if result.isvalid():
+	if result.is_valid():
 		print('日時:' + str(datetime.datetime.now()))
 		print('気温: %-3.1f C' % result.temperature)
 		print('湿度: %-3.1f %%' % result.humidity)
