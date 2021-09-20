@@ -16,29 +16,29 @@ instance = dht11.DHT11(pin=14)
 ambi=ambient.Ambient(41563,'ba0c12f7851e4dad')
 
 def take_temp_humid():
-    result = instance.read()
-    if result.isvalid():
-        print('日時:' + str(datetime.datetime.now()))
-        print('気温: %-3.1f C' % result.temperature)
-        print('湿度: %-3.1f %%' % result.humidity)
+	result = instance.read()
+	if result.isvalid():
+		print('日時:' + str(datetime.datetime.now()))
+		print('気温: %-3.1f C' % result.temperature)
+		print('湿度: %-3.1f %%' % result.humidity)
 
 def send_ambi():
-    r=ambi.send({'d1':result.temperature, 'd2':result.humidity})
-    print('ambiへ送信')
+	r=ambi.send({'d1':result.temperature, 'd2':result.humidity})
+	print('ambiへ送信')
 
 def store_data():
-    with open('tem_humid.csv','a',newline='') as f:
-        writer=csv.writer(f,lineterminator='\n')
-        writer.writerow([datatime.datetime.now(),result.temperature,result.humidity])
+	with open('tem_humid.csv','a',newline='') as f:
+		writer=csv.writer(f,lineterminator='\n')
+		writer.writerow([datatime.datetime.now(),result.temperature,result.humidity])
 
 try:
-    while True:
-        take_temp_humid()
-        send_ambi()
-        store_data()
+	while True:
+		take_temp_humid()
+		send_ambi()
+		store_data()
 
-        time.sleep(2)
+		time.sleep(2)
 
 except KeyboardInterrupt:
-    print('Cleanup')
-    GPIO.cleanup()
+	print('Cleanup')
+	GPIO.cleanup()
