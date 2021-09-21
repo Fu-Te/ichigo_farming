@@ -4,6 +4,7 @@ import time
 import datetime
 import csv
 import ambient
+import tkinter
 
 #GPIOの初期化
 #GPIO.setwarnings(True)
@@ -14,6 +15,9 @@ import ambient
 
 #ambientの設定
 ambi=ambient.Ambient(41563,'ba0c12f7851e4dad')
+
+#tkinterの設定
+app=tkinter.Tk()
 
 def sensor_settings():
 	#GPIO初期化
@@ -49,16 +53,39 @@ def store_data():
 			writer.writerow([datetime.datetime.now(),result.temperature,result.humidity])
 			print("csv保存成功")
 
-sensor_settings()
+def gui_start():
+	app.geometry(
+		'400x400'
+	)
+	app.title(
+		'センサ'
+	)
 
+def gui_label():
+	label1=tkinter.Label(
+		app,
+		font = ('System',30),
+		text = '温度: %-3.1f C' %result.humidity
+	)
+	label2=tkinter.Label(
+		app,
+		font = ('System',30),
+		text = '湿度: %-3.1f %%' % result.humidity
+	)
+
+sensor_settings()
+gui_start()
 try:
 	while True:
 		take_temp_humid()
 		send_ambi()
 		store_data()
+		gui_label()
 
 		time.sleep(6)
 
 except KeyboardInterrupt:
 	print('Cleanup')
 	GPIO.cleanup()
+
+app.mainloop()
