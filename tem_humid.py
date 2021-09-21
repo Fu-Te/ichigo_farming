@@ -5,6 +5,11 @@ import datetime
 import csv
 import ambient
 
+
+#グローバル関数の定義
+global instance
+global result
+
 #GPIOの初期化
 #GPIO.setwarnings(True)
 #GPIO.setmode(GPIO.BCM)
@@ -19,11 +24,11 @@ def sensor_settings():
 	#GPIO初期化
 	GPIO.setwarnings(True)
 	GPIO.setmode(GPIO.BCM)
+	global instance
 	instance = dht11.DHT11(pin=14)
 
 def take_temp_humid():
 	#グローバル関数にすることで他の関数内でも利用可能，変数(result.temperature,result.humidityが変化するように．)
-	global result
 	result = instance.read()
 	if result.is_valid():
 		if result.humidity != 0 or result.temperature != 0:
