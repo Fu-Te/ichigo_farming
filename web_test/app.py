@@ -1,3 +1,4 @@
+# coding:utf-8
 from flask import Flask,render_template
 from tem_humid import take_temp_humid
 from tem_humid import sensor_settings
