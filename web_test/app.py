@@ -1,5 +1,6 @@
 from flask import Flask,render_template
-from tem_humid import take_temp_humid,sensor_settings
+from tem_humid import take_temp_humid
+from tem_humid import sensor_settings
 
 
 app = Flask(__name__)
