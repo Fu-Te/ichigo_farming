@@ -47,6 +47,7 @@ def store_data():
 		if result.humidity != 0 or result.temperature != 0:
 			writer=csv.writer(f,lineterminator='\n')
 			writer.writerow([datetime.datetime.now(),result.temperature,result.humidity])
+			print("csv保存成功")
 
 sensor_settings()
 
