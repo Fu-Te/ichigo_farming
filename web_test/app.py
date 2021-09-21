@@ -1,5 +1,5 @@
-from flask import Flask
-from .. import tem_humid
+from flask import Flask,render_template
+
 app = Flask(__name__)
 @app.route('/')
 #def hello_world():
