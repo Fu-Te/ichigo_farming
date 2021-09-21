@@ -12,6 +12,5 @@ def main():
 	return render_template('main.html',)
 
 
-if name__=='__main__':
-
+if __name__=='__main__':
 	app.run(port=8000,debug=True)
