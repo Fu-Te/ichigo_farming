@@ -17,7 +17,7 @@ import tkinter
 ambi=ambient.Ambient(41563,'ba0c12f7851e4dad')
 
 #tkinterの設定
-app=tkinter.Tk()
+#app=tkinter.Tk()
 
 def sensor_settings():
 	#GPIO初期化
@@ -74,11 +74,11 @@ def gui_label():
 	)
 
 sensor_settings()
-gui_start()
+#gui_start()
 try:
 	while True:
 		take_temp_humid()
-		gui_label()
+		#gui_label()
 		send_ambi()
 		store_data()
 
@@ -88,4 +88,4 @@ except KeyboardInterrupt:
 	print('Cleanup')
 	GPIO.cleanup()
 
-app.mainloop()
+#app.mainloop()
