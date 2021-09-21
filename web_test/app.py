@@ -4,12 +4,12 @@ from tem_humid import take_temp_humid,sensor_settings
 
 app = Flask(__name__)
 @app.route('/')
-#def hello_world():
-#	return 'hello_world'
 def main():
 	sensor_settings()
 	take_temp_humid()
-	return render_template('main.html',)
+	temp = result.temperature
+	humid = result.humidity
+	return render_template('main.html',temp=temp,humid=humid)
 
 
 if __name__=='__main__':
