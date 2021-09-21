@@ -41,7 +41,7 @@ pybluezを使う方法があるっぽい？
 全てのOSで使えるという点ではBleakがいいっぽい．
 bleakを使う場合はこれまでのゼミの活動をもう一度チェックしてみると楽に進むかも？
 授業で取り扱ったスライド2年後期第２回〜
-
+猿でもわかるBLE:https://www.musen-connect.co.jp/blog/course/trial-production/ble-beginner-1/
 webページで確認センサデータを確認できるようになったら面白いかも？　参考:https://www.iotstarters.com/raspberry-pi-flask-web-server-with-dht11/
 
 
