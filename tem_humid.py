@@ -78,9 +78,9 @@ gui_start()
 try:
 	while True:
 		take_temp_humid()
+		gui_label()
 		send_ambi()
 		store_data()
-		gui_label()
 
 		time.sleep(6)
 
