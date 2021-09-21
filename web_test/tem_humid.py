@@ -6,14 +6,21 @@ import csv
 import ambient
 
 #GPIOの初期化
-GPIO.setwarnings(True)
-GPIO.setmode(GPIO.BCM)
+#GPIO.setwarnings(True)
+#GPIO.setmode(GPIO.BCM)
 
 #データの読み込みで14ピンを使う
-instance = dht11.DHT11(pin=14)
+#instance = dht11.DHT11(pin=14)
 
 #ambientの設定
 ambi=ambient.Ambient(41563,'ba0c12f7851e4dad')
+
+def sensor_settings():
+	#GPIO初期化
+	GPIO.setwarnings(True)
+	GPIO.setmode(GPIO.BCM)
+	global instance
+	instance = dht11.DHT11(pin=14)
 
 def take_temp_humid():
 	#グローバル関数にすることで他の関数内でも利用可能，変数(result.temperature,result.humidityが変化するように．)
@@ -40,6 +47,8 @@ def store_data():
 		if result.humidity != 0 or result.temperature != 0:
 			writer=csv.writer(f,lineterminator='\n')
 			writer.writerow([datetime.datetime.now(),result.temperature,result.humidity])
+
+sensor_settings()
 
 try:
 	while True:
