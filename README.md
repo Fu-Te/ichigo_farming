@@ -29,6 +29,9 @@ GATT通信ではServiceとCharacteristicという概念でデータのやり取�
 
 ペリフェラルはセントラルに対して，自分の持っているサービス（データ構造）を公開する．
 キャラクタリスティックは属性が決められていて，「Read」「Write」「Notify」など種類がある．セントラル機器は「Read」属性がないとキャラクタリスティックの内容を読み出せないし，「Write」属性がないキャラクタリスティックの内容を書き込むことはできない．
+ペリフェラル機器は複数のサービス，キャラクタリスティックを持つことができる．
+サービスやキャラクタリスティックにはUUIDという１６バイトの一意な番号がつけられていて，セントラル機器はUUIDを指定して，キャラクタリスティックのデータ内容にアクセスします．
+
 
 
 https://tomosoft.jp/design/?p=41722
