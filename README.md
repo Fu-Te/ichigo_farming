@@ -27,6 +27,9 @@ GATT通信ではServiceとCharacteristicという概念でデータのやり取�
 
 サービスはキャラクタリスティックを昨日単位で一括りにしたラベルのようなもの
 
+ペリフェラルはセントラルに対して，自分の持っているサービス（データ構造）を公開する．
+キャラクタリスティックは属性が決められていて，「Read」「Write」「Notify」など種類がある．セントラル機器は「Read」属性がないとキャラクタリスティックの内容を読み出せないし，「Write」属性がないキャラクタリスティックの内容を書き込むことはできない．
+
 
 https://tomosoft.jp/design/?p=41722
 https://www.denshi.club/cookbook/sensor/co2/co210ble.html
