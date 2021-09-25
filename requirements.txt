@@ -1,4 +1,0 @@
-dht11 
-bluepy
-pybleno
-bleak
