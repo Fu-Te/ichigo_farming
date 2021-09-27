@@ -89,8 +89,11 @@ $ pip install git+https://github.com/AmbientDataInc/ambient-python-lib.git
 ```
 $ source venv/bin/activate
 ```
-
-
+以下のコマンドで温度湿度を計測可能．しかし，ambientのID等を変更する必要がある．使わない場合は７９行目をコメントアウトしてほしい．
+```
+$ python tem_humid.py
+```
+ここからはまだ実装途中．
 以下のコマンドでBLEペリフェラルのアドレスを探す(central上で実行)
 ```
 $ sudo python3 discover.py
