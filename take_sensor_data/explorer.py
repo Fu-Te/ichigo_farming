@@ -8,7 +8,7 @@ from bleak import BleakClient
 ADDRESS = (
     "24:71:89:cc:09:05" #windows,lunuxの場合
     if platform.system() != "Darwin"
-    else "2DE643AA-22A6-460A-A37D-E248D1273502" #macの場合
+    else "72E3A28D-B994-4F56-BCB4-2FB23733B955" #macの場合
 )
 if len(sys.argv) == 2:
     ADDRESS = sys.argv[1]
