@@ -65,6 +65,11 @@ BluetoothMeshについて:https://www.musen-connect.co.jp/blog/course/trial-prod
 猿でもわかるBLE:https://www.musen-connect.co.jp/blog/course/trial-production/ble-beginner-1/
 webページで確認センサデータを確認できるようになったら面白いかも？　参考:https://www.iotstarters.com/raspberry-pi-flask-web-server-with-dht11/
 
+# nrf52840dkについて
+nrfデバイスを[これ](https://qiita.com/Fu-Te/items/6a3859c6ca86f99cedf2)を参考にセットアップ．
+nRF Connectを使うと，アドバタイズを出したりできる．
+そこでアドバタイズを出させた後にdiscover.pyを入れると，nrfデバイスのUUID，アドレスを確認できる．　とりあえずここまで
+
 
 
 
