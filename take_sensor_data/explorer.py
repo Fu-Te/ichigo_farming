@@ -6,9 +6,9 @@ import logging
 from bleak import BleakClient
 
 ADDRESS = (
-    "CE:19:19:CD:2B:DB" #windows,lunuxの場合
+    "24:71:89:cc:09:05"
     if platform.system() != "Darwin"
-    else "72E3A28D-B994-4F56-BCB4-2FB23733B955" #macの場合
+    else "B9EA5233-37EF-4DD6-87A8-2A875E821C46"
 )
 if len(sys.argv) == 2:
     ADDRESS = sys.argv[1]
