@@ -12,6 +12,7 @@ import tkinter
 
 #データの読み込みで14ピンを使う
 #instance = dht11.DHT11(pin=14)
+#tkinterで使えるようにしたら面白いかも
 
 #ambientの設定
 ambi=ambient.Ambient(41563,'ba0c12f7851e4dad')
