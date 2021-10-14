@@ -3,11 +3,10 @@ import asyncio
 
 from bleak import discover
 
-def scan():
-	async def run():
-		devices = await discover()
-		for d in devices:
-			print(d)
+async def run():
+    devices = await discover()
+    for d in devices:
+        print(d)
 
-	loop = asyncio.get_event_loop()
-	loop.run_until_complete(run())
+loop = asyncio.get_event_loop()
+loop.run_until_complete(run())
