@@ -10,6 +10,6 @@ def scan():
 			print(d)
 
 	loop = asyncio.get_event_loop()
-	loop.run_until_complete(run())
+	return loop.run_until_complete(run())
 
 scan()
