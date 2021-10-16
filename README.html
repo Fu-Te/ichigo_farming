@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>README.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/* https://github.com/microsoft/vscode/blob/master/extensions/markdown-language-features/media/markdown.css */
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: var(--vscode-markdown-font-family, -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif);
+	font-size: var(--vscode-markdown-font-size, 14px);
+	padding: 0 26px;
+	line-height: var(--vscode-markdown-line-height, 22px);
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-light.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-dark.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line .code-line:hover:before {
+	border-left: none;
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	text-decoration: none;
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left-width: 5px;
+	border-left-style: solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 1em;
+	line-height: 1.357em;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+pre code {
+	color: var(--vscode-editor-foreground);
+	tab-size: 4;
+}
+
+/** Theming */
+
+.vscode-light pre {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe WPC", "Segoe UI", "Ubuntu", "Droid Sans", sans-serif, "Meiryo";
+	padding: 0 12px;
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+code {
+	font-size: 14px;
+	line-height: 19px;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+<script src="https://unpkg.com/mermaid/dist/mermaid.min.js"></script>
+</head>
+<body>
+  <script>
+    mermaid.initialize({
+      startOnLoad: true,
+      theme: document.body.classList.contains('vscode-dark') || document.body.classList.contains('vscode-high-contrast')
+          ? 'dark'
+          : 'default'
+    });
+  </script>
+<h1 id="%E6%97%A5%E6%9C%AC%E8%AA%9E">日本語</h1>
+<h1 id="%E3%81%AF%E3%81%98%E3%82%81%E3%81%AB">はじめに</h1>
+<p>このレポジトリーではRaspberrypiで気温、湿度、土壌湿度、日照などをセンサで計測し、Bluetooth接続を用いて、他の端末と接続し、制御、通知、データ収集及び解析を行う目的で作られたものです。</p>
+<p>The purpose of this repository is to use the Raspberrypi to measure temperature, humidity, soil humidity, sunshine, etc. with sensors and connect to other devices using Bluetooth connectivity for control, notification, data collection and analysis.</p>
+<h1 id="%E3%81%9D%E3%82%82%E3%81%9D%E3%82%82ble%E3%81%A9%E3%81%86%E3%82%84%E3%81%A3%E3%81%A6%E3%81%A4%E3%81%8B%E3%81%86%E3%81%AE">そもそもBLEどうやってつかうの？</h1>
+<p>BLE通信ではCentral(セントラル)とPeripheral(ペリフェラル)の２種類の役割があって，この二者間でやりとりがされるらしい．
+セントラルは通信を制御する役割を持っていて，BLEではセントラルがペリフェラルに対して要求を出すことでデータ通信が行われる．一般的にはセントラルがスマホとかPC，
+ペリフェラルはセントラルからの要求に応える形で通信を行う．通信の制御機能は持ってない．
+つまり，コードを書くときには，送信側（データ取得等）と受信側で２個コードを書く必要があるっぽい．
+UUIDという識別子があって，それを指定することでセントラルはペリフェラル内の情報にアクセスできる．</p>
+<p>セントラルがペリフェラルに対して接続要求をし，ペリフェラルからセントラルへ接続確立，データのやりとりをする．接続を終了する際はセントラルからペリフェラルへ接続切断をしらせる．</p>
+<p>1.ペリフェラルはセントラルからの接続待ち状態としてアドバタイズという状態になる．アドバタイズは，ペリフェラル機器が’どこにいるか’を伝える．アドバタイズの発信周期は自由に設定できる．このアドバタイズにはペリフェラル機器の名前や属性データを含めて発信できる．また，アドバタイズはブロードキャスト通信である．</p>
+<p>2.セントラル機器はスキャンをすることで，アドバタイズを受信し，周囲にどのようなペリフェラル機器がいるかを知ることができる．複数のペリフェラル機器がアドバタイズを発信している場合は，セントラル機器はそれぞれのアドバタイズを受信して，周囲にいる複数のペリフェラル機器を認識することができる．受信した電波の強さに関する情報も得ることができ，ペリフェラル機器との距離感を知ることができる．</p>
+<p>3.セントラル機器は見つけたペリフェラル機器の中から１対１の通信接続をしたい相手を選び，接続要求を送信することができる．ペリフェラルはアドバタイズを発信した後，少しの時間，自分に対する接続要求が飛んでこないか待っている．接続要求を受信すると，アドバタイズをやめて１対１の接続通信に切り替える．
+<img width="444" alt="17f456767dd1c28a38ae8ab114896409" src="https://user-images.githubusercontent.com/37261985/134323698-d46a82d9-8fb8-48a1-bbc6-921cfabf7c15.png">（猿でもわかるBLEより）</p>
+<p>4.GATT通信ではServiceとCharacteristicという概念でデータのやり取りをする．</p>
+<p>5.キャラクタリスティックはペリフェラル機器がセントラル機器に公開して共有するデータ構造のことで，ペリフェラル機器とセントラル機器はこのキャラクタリスティックを介してデータのやり取りを行う．</p>
+<p>6.サービスはキャラクタリスティックを昨日単位で一括りにしたラベルのようなもの</p>
+<p>7.ペリフェラルはセントラルに対して，自分の持っているサービス（データ構造）を公開する．
+キャラクタリスティックは属性が決められていて，「Read」「Write」「Notify」など種類がある．セントラル機器は「Read」属性がないとキャラクタリスティックの内容を読み出せないし，「Write」属性がないキャラクタリスティックの内容を書き込むことはできない．
+ペリフェラル機器は複数のサービス，キャラクタリスティックを持つことができる．
+サービスやキャラクタリスティックにはUUIDという１６バイトの一意な番号がつけられていて，セントラル機器はUUIDを指定して，キャラクタリスティックのデータ内容にアクセスします．</p>
+<p>https://tomosoft.jp/design/?p=41722
+https://www.denshi.club/cookbook/sensor/co2/co210ble.html</p>
+<p><a href="https://houwa-js.co.jp/2018/06/20180629/">参考</a></p>
+<h1 id="%E6%B0%97%E6%B8%A9%E6%B9%BF%E5%BA%A6">気温、湿度</h1>
+<p>気温、湿度はDHT11を用いて計測します。
+コードは<a href="https://github.com/szazo/DHT11_Python">こちら</a>を参考に書いています。
+The code is written with reference to <a href="https://github.com/szazo/DHT11_Python">here</a>.
+GND:6pin
+DATA:8pin
+VCC:2pin</p>
+<h1 id="%E3%81%93%E3%82%8C%E3%81%8B%E3%82%89%E5%AE%9F%E8%A3%85%E3%81%97%E3%81%9F%E3%81%84%E3%81%93%E3%81%A8">これから実装したいこと</h1>
+<p>これからはユーザから要請があったときにcsvファイルを送信する方法
+１時間ごとにcsvファイルをメイン機に送信する機能
+異常なデータがとれた際にデータを送信する方法
+ambientを使ってデータをクラウドに送信し，グラフ化</p>
+<p><a href="https://github.com/IanHarvey/bluepy">bluepy</a>
+bluetoothでの通信はbluepyを用いる
+<a href="https://pypi.org/project/bleak/">bleak</a>を使う，
+pybluezを使う方法があるっぽい？
+全てのOSで使えるという点ではBleakがいいっぽい．
+bleakを使う場合はこれまでのゼミの活動をもう一度チェックしてみると楽に進むかも？
+授業で取り扱ったスライド2年後期第２回〜</p>
+<p>BluetoothMeshについて:https://www.musen-connect.co.jp/blog/course/trial-production/bluetooth5-2/
+猿でもわかるBLE:https://www.musen-connect.co.jp/blog/course/trial-production/ble-beginner-1/
+webページで確認センサデータを確認できるようになったら面白いかも？　参考:https://www.iotstarters.com/raspberry-pi-flask-web-server-with-dht11/</p>
+<h1 id="nrf52840dk%E3%81%AB%E3%81%A4%E3%81%84%E3%81%A6">nrf52840dkについて</h1>
+<p>nrfデバイスを<a href="https://qiita.com/Fu-Te/items/6a3859c6ca86f99cedf2">これ</a>を参考にセットアップ．
+nRF Connectを使うと，アドバタイズを出したりできる．
+そこでアドバタイズを出させた後にdiscover.pyを入れると，nrfデバイスのUUID，アドレスを確認できる．　とりあえずここまで</p>
+<h1 id="%E4%BD%BF%E3%81%84%E6%96%B9">使い方</h1>
+<p>raspberrypi上で</p>
+<pre class="hljs"><code><div>$ git clone https://github.com/Fu-Te/ichigo_farming.git
+</div></code></pre>
+<p>次にディレクトリ移動</p>
+<pre class="hljs"><code><div>$ cd ichigo_farming
+</div></code></pre>
+<p>必要なものを入れる</p>
+<pre class="hljs"><code><div>$ sudo apt-get install libglib2.0-dev
+</div></code></pre>
+<pre class="hljs"><code><div>$ pip install git+https://github.com/AmbientDataInc/ambient-python-lib.git
+</div></code></pre>
+<p>次のコマンドで仮想環境に入ります．それによってpip等でインストールする手間を省ける（多分</p>
+<pre class="hljs"><code><div>$ source venv/bin/activate
+</div></code></pre>
+<p>以下のコマンドで温度湿度を計測可能．しかし，ambientのID等を変更する必要がある．使わない場合は７９行目をコメントアウトしてほしい．</p>
+<pre class="hljs"><code><div>$ python tem_humid.py
+</div></code></pre>
+<p>ここからはまだ実装途中．
+以下のコマンドでBLEペリフェラルのアドレスを探す(central上で実行)</p>
+<pre class="hljs"><code><div>$ sudo python3 discover.py
+</div></code></pre>
+<p>アドバタイジングしているBLEペリフェラルを探し，見つけ，Device Addrをメモしておく．
+explorer.pyのコードのアドレス部分を取得したアドレスに変更する．
+そして</p>
+<pre class="hljs"><code><div>$ python3 explorer.py
+</div></code></pre>
+<p>を実行し，通信できることを確認する．</p>
+<h1 id="english">English</h1>
+<h1 id="how-does-ble-work-in-the-first-place">How does BLE work in the first place?</h1>
+<p>In BLE communication, there are two types of roles, Central and Peripheral, and they communicate with each other.
+Central has the role of controlling the communication, and in BLE, data communication is performed by Central issuing requests to Peripheral. In general, the central is a smartphone or PC.
+Peripherals communicate in response to requests from the central. It does not have any function to control the communication.
+In other words, when you write code, you need to write two codes, one for the sending side (data acquisition, etc.) and one for the receiving side.
+There is an identifier called UUID, and by specifying it, the central can access the information in the peripheral.</p>
+<p>The central makes a connection request to the peripheral, the peripheral establishes a connection to the central, and data is exchanged. When the connection is terminated, the central sends a disconnection message to the peripheral.</p>
+<p>https://tomosoft.jp/design/?p=41722
+https://www.denshi.club/cookbook/sensor/co2/co210ble.html</p>
+<p><a href="https://houwa-js.co.jp/2018/06/20180629/">Reference</a></p>
+<h1 id="temperature-and-humidity">Temperature and humidity</h1>
+<p>The temperature and humidity are measured using DHT11.
+The code is written with reference to <a href="https://github.com/szazo/DHT11_Python">here</a>.
+The code is written with reference to <a href="https://github.com/szazo/DHT11_Python">here</a>.
+GND:6pin
+DATA:8pin
+VCC:2pin</p>
+<p>From now on, how to send a csv file when requested by the user
+Function to send csv file to the main unit every hour.
+How to send data when abnormal data is obtained.
+Send data to the cloud using ambient and graph it.</p>
+<p><a href="https://github.com/IanHarvey/bluepy">bluepy</a>
+Use bluepy to communicate via bluetooth
+Using bleak.
+There seems to be a way to use pybluez?
+Bleak seems to be better in that it can be used on all OS.
+If you want to use bleak, you should check the activities of the seminar so far.
+Slides from the second semester of the second year of the class</p>
+<h1 id="how-to-use">How to use</h1>
+<p>On raspberrypi</p>
+<pre class="hljs"><code><div>$ git clone https://github.com/Fu-Te/ichigo_farming.git
+</div></code></pre>
+<p>Then move the directory</p>
+<pre class="hljs"><code><div>$ cd ichigo_farming
+</div></code></pre>
+<p>Put in what you need.</p>
+<pre class="hljs"><code><div>$ sudo apt-get install libglib2.0-dev
+</div></code></pre>
+<pre class="hljs"><code><div>$ pip install git+https://github.com/AmbientDataInc/ambient-python-lib.git
+</div></code></pre>
+<p>The following command enters the virtual environment. It will save you the trouble of installing it with pip (maybe).</p>
+<pre class="hljs"><code><div>$ source venv/bin/activate
+</div></code></pre>
+<p>Find the BLE peripheral addr with the following command (run on central)</p>
+<pre class="hljs"><code><div>$ sudo python3 discover.py
+</div></code></pre>
+<p>Find and locate the BLE peripheral you are advertising, and note down the Device Addr.</p>
+<p>Replace the addr with the one you got before and then execute the following command to see if we can communicate.</p>
+<pre class="hljs"><code><div>$ sudo python3 explorer.py
+</div></code></pre>
+<p>That is it for now.</p>
+
+</body>
+</html>
