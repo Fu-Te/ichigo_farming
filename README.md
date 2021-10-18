@@ -40,13 +40,15 @@ https://www.denshi.club/cookbook/sensor/co2/co210ble.html
 
 [参考](https://houwa-js.co.jp/2018/06/20180629/)
 # 気温、湿度
+## Raspberrypiを用いる場合
 気温、湿度はDHT11を用いて計測します。
 コードは[こちら](https://github.com/szazo/DHT11_Python)を参考に書いています。
 The code is written with reference to [here](https://github.com/szazo/DHT11_Python).
 GND:6pin
 DATA:8pin
 VCC:2pin
-
+## nrf52840DKを用いる場合
+nrf52840DKを用いる場合は，[こちら](https://qiita.com/Fu-Te/items/b0485bf5f5a9a1dfe22f)を参考に導入を行ってください
 # これから実装したいこと
 
 これからはユーザから要請があったときにcsvファイルを送信する方法
