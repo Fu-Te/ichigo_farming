@@ -73,6 +73,7 @@ def gui_label():
 		text = '湿度: %-3.1f %%' % result.humidity
 	)
 
+
 sensor_settings()
 try:
 	while True:
