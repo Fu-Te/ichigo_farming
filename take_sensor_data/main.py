@@ -53,25 +53,7 @@ def store_data():
 			writer.writerow([datetime.datetime.now(),result.temperature,result.humidity])
 			print("csv保存成功")
 
-def gui_start():
-	app.geometry(
-		'400x400'
-	)
-	app.title(
-		'センサ'
-	)
 
-def gui_label():
-	label1=tkinter.Label(
-		app,
-		font = ('System',30),
-		text = '温度: %-3.1f C' %result.humidity
-	)
-	label2=tkinter.Label(
-		app,
-		font = ('System',30),
-		text = '湿度: %-3.1f %%' % result.humidity
-	)
 
 
 sensor_settings()
