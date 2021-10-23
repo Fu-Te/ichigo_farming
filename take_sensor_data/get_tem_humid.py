@@ -52,6 +52,8 @@ def store_data():
 			writer=csv.writer(f,lineterminator='\n')
 			writer.writerow([datetime.datetime.now(),result.temperature,result.humidity])
 			print("csv保存成功")
+		else:
+			print('保存しません')
 
 def cleanup():
 	GPIO.cleanup()
