@@ -56,6 +56,8 @@ nrf52840DKを用いる場合は，[こちら](https://qiita.com/Fu-Te/items/b048
 異常なデータがとれた際にデータを送信する方法
 ambientを使ってデータをクラウドに送信し，グラフ化
 
+センサや照明制御にはBlueZを用いるのがいいかも(raspberrypi)
+macやwindowsなどではbleakを用いるのが楽っぽい
 [bluepy](https://github.com/IanHarvey/bluepy)
 bluetoothでの通信はbluepyを用いる
 [bleak](https://pypi.org/project/bleak/)を使う，
@@ -65,7 +67,9 @@ bleakを使う場合はこれまでのゼミの活動をもう一度チェック
 授業で取り扱ったスライド2年後期第２回〜
 
 BluetoothMeshについて:https://www.musen-connect.co.jp/blog/course/trial-production/bluetooth5-2/
+
 猿でもわかるBLE:https://www.musen-connect.co.jp/blog/course/trial-production/ble-beginner-1/
+
 webページで確認センサデータを確認できるようになったら面白いかも？　参考:https://www.iotstarters.com/raspberry-pi-flask-web-server-with-dht11/
 
 # nrf52840dkについて
@@ -84,7 +88,7 @@ $ git clone https://github.com/Fu-Te/ichigo_farming.git
 ```
 次にディレクトリ移動
 ```
-$ cd ichigo_farming
+$ cd ichigo_farming/take_sensor_data
 ```
 必要なものを入れる
 ```
@@ -99,7 +103,11 @@ $ source venv/bin/activate
 ```
 以下のコマンドで温度湿度を計測可能．しかし，ambientのID等を変更する必要がある．使わない場合は７９行目をコメントアウトしてほしい．
 ```
-$ python tem_humid.py
+$ python main.py
+```
+main.pyの中の以下のところを変更していただけると自分でデータを取ることができます．
+```
+ambi=ambient.Ambient()
 ```
 ここからはまだ実装途中．
 以下のコマンドでBLEペリフェラルのアドレスを探す(central上で実行)
