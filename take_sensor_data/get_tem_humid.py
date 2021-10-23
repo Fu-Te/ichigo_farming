@@ -5,6 +5,7 @@ import datetime
 import csv
 import ambient
 import tkinter
+import requests
 
 #GPIOの初期化
 #GPIO.setwarnings(True)
@@ -40,11 +41,15 @@ def take_temp_humid():
 			print('湿度温度取得失敗')
 
 def send_ambi():
-	if result.humidity != 0 or result.temperature != 0:
-		r=ambi.send({'d1':result.temperature, 'd2':result.humidity})
-		print('ambiへ送信')
-	else:
-		print('温度湿度取得失敗したため送信しません．')
+	try:
+		if result.humidity != 0 or result.temperature != 0:
+			ret = ambi.send({'d1':result.temperature, 'd2':result.humidity})
+			print('sent to Ambient (ret = %d)' % ret.status_code)
+		else:
+			print('温湿度取得失敗のため送信しません')
+	except requests.exceptions.RequestException as e:
+		print('request failed: ', e)
+
 
 def store_data():
 	with open('tem_humid.csv','a',newline='') as f:
