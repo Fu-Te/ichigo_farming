@@ -1,13 +1,28 @@
 import asyncio
-from bleak import BleakClient
+import platform
+import sys
 
-address = "CE:19:19:CD:2B:DB"
-MODEL_NBR_UUID = "72E3A28D-B994-4F56-BCB4-2FB23733B955"
+from bleak import BleakClient, BleakScanner
+from bleak.exc import BleakError
 
-async def run(address):
-    async with BleakClient(address) as client:
-        model_number = await client.read_gatt_char(MODEL_NBR_UUID)
-        print("Model Number: {0}".format("".join(map(chr, model_number))))
 
-loop = asyncio.get_event_loop()
-loop.run_until_complete(run(address))
+ADDRESS = (
+    "24:71:89:cc:09:05"
+    if platform.system() != "Darwin"
+    else "69BB950D-B8AF-4109-9688-38C4B196F19D"
+)
+
+
+async def main(ble_address: str):
+    device = await BleakScanner.find_device_by_address(ble_address, timeout=20.0)
+    if not device:
+        raise BleakError(f"A device with address {ble_address} could not be found.")
+    async with BleakClient(device) as client:
+        svcs = await client.get_services()
+        print("Services:")
+        for service in svcs:
+            print(service)
+
+
+if __name__ == "__main__":
+    asyncio.run(main(sys.argv[1] if len(sys.argv) == 2 else ADDRESS))
