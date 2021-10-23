@@ -40,10 +40,10 @@ def take_temp_humid():
 		else:
 			print('湿度温度取得失敗')
 
-def send_ambi():
+def send_ambi(ambi_address):
 	try:
 		if result.humidity != 0 or result.temperature != 0:
-			ret = ambi.send({'d1':result.temperature, 'd2':result.humidity})
+			ret = ambi_address.send({'d1':result.temperature, 'd2':result.humidity})
 			print('sent to Ambient (ret = %d)' % ret.status_code)
 		else:
 			print('温湿度取得失敗のため送信しません')
@@ -68,7 +68,7 @@ sensor_settings()
 try:
 	while True:
 		take_temp_humid()
-		send_ambi()
+		send_ambi(ambi)
 		store_data()
 
 		time.sleep(6)
