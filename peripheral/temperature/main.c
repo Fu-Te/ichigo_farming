@@ -55,11 +55,15 @@ int DHT11ReadByte(void)
 void DHT11ReadData()
 {   
   int counter,err,humiInt,humiDec,tempInt,tempDec,checkSum,decimal_value1,decimal_value2,decimal_value3;
+  const nrf_drv_twi_config_t twi_lis3d_config={
+	  .scl = 10
+	  .sda = 11
+  }
+  nrf_gpio_cfg_output(DHT11_PIN);
   nrf_gpio_pin_set(DHT11_PIN);
   nrf_delay_ms(250);
-  nrf_gpio_cfg_output(DHT11_PIN);
   nrf_gpio_pin_clear(DHT11_PIN);   // Send Start Signal
-  nrf_delay_ms(20);   
+  nrf_delay_ms(250);   
   nrf_gpio_pin_set(DHT11_PIN);
   nrf_delay_us(40);                // Send Start Signal end
   nrf_gpio_cfg_input(DHT11_PIN, NRF_GPIO_PIN_PULLUP);
