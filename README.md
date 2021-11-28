@@ -39,6 +39,8 @@ https://tomosoft.jp/design/?p=41722
 https://www.denshi.club/cookbook/sensor/co2/co210ble.html
 https://go.orixrentec.jp/rentecinsight/measure/article-3
 
+# raspberrypiでBluetoothMeshを使えるようにする．
+
 [参考](https://houwa-js.co.jp/2018/06/20180629/)
 # 気温、湿度
 ## Raspberrypiを用いる場合
