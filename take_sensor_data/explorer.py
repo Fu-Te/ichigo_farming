@@ -6,7 +6,7 @@ import logging
 from bleak import BleakClient
 
 ADDRESS = (
-    "CE:19:19:CD:2B:DB"
+    "E4:5F:01:38:C5:37"
     if platform.system() != "Darwin"
     else "529D6EA7-D1F6-45E6-A45D-9E2D87A7EE40"
 )
