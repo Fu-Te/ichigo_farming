@@ -1,125 +1,217 @@
+static uint8_t humidity_high;
+static uint8_t humidity_low;
+static uint8_t temperature_high;
+static uint8_t temperature_low;
+static uint8_t parity;
 
+// DHT11
+#define DHT11_BUS_PIN (41) //P1.09 //32+09=41
 
-#include <stdbool.h>
-#include <stdint.h>
-#include <stdio.h>
-#include "nrf.h"
-#include "nrf_delay.h"
-#include "app_error.h"
-#include "bsp.h"
-
-#include "nrf_log.h"
-#include "nrf_log_ctrl.h"
-#include "nrf_log_default_backends.h"
-
-
-#define DHT11_PIN 7
-
-int DHT11ReadByte(void)
+static void gpio_init(void)
 {
-  int ByteData=0,i;
-  unsigned long int counter=0;
-  for(i=0;i<8;i++)
-  {
-    ByteData = ByteData * 2;
-    counter = 0;
-    while(0==(nrf_gpio_pin_read(DHT11_PIN))) // may be 50us
-    {
-      counter++;
-      nrf_delay_us(1);
-      if ( 200 < counter  ){
-        NRF_LOG_INFO("error1\n");
-        return -1;
-      }
-    }
-    counter = 0;
-    while(1==(nrf_gpio_pin_read(DHT11_PIN)))
-    {
-      counter++;
-      nrf_delay_us(1);
-      if ( 200 < counter  ){
-        NRF_LOG_INFO("error2\n");
-        return -1;
-      }
-    }
-    if(counter<30)  // 40... error
-    {
-            // 26-28us : Bit data "0"
-    } else {
-      ByteData = ByteData +1; // 70us : Bit data "1"
-    }           
-  }
-  return ByteData;
+    ret_code_t err_code;
+
+    err_code = nrf_drv_gpiote_init();
+    APP_ERROR_CHECK(err_code);
+
+    //-----------------------------------------------
+    // DHT11 BUS
+    nrf_gpio_cfg_output(DHT11_BUS_PIN);
+    nrf_gpio_pin_set(DHT11_BUS_PIN); // default:High
+
+    //nrf_gpio_cfg_input(DHT11_BUS_PIN, NRF_GPIO_PIN_PULLUP);
 }
 
-void DHT11ReadData()
-{   
-  int counter,err,humiInt,humiDec,tempInt,tempDec,checkSum,decimal_value1,decimal_value2,decimal_value3;
-  const nrf_drv_twi_config_t twi_lis3d_config={
-	  .scl = 10
-	  .sda = 11
-  }
-  nrf_gpio_cfg_output(DHT11_PIN);
-  nrf_gpio_pin_set(DHT11_PIN);
-  nrf_delay_ms(250);
-  nrf_gpio_pin_clear(DHT11_PIN);   // Send Start Signal
-  nrf_delay_ms(250);   
-  nrf_gpio_pin_set(DHT11_PIN);
-  nrf_delay_us(40);                // Send Start Signal end
-  nrf_gpio_cfg_input(DHT11_PIN, NRF_GPIO_PIN_PULLUP);
-  nrf_delay_us(1);
-  counter=0;
-  while(nrf_gpio_pin_read(DHT11_PIN)==0) // Receive LOW answer ( 83us)
-  {
-    nrf_delay_us(1);
-    counter++;
-    if ( 200 < counter ){
-        NRF_LOG_INFO("got wrong start1\n");
-        return;
-    }
-  }
-  counter=0;
-  while(nrf_gpio_pin_read(DHT11_PIN)==1) // Recieve High answer ( 87us)
-  {
-    nrf_delay_us(1);
-    counter++;
-    if ( 200 < counter ){
-      NRF_LOG_INFO("got wrong start2\n");
-      return;
-    }
-  }
-  humiInt = DHT11ReadByte();
-  humiDec = DHT11ReadByte();
-  tempInt = DHT11ReadByte();
-  tempDec = DHT11ReadByte();
-  checkSum = DHT11ReadByte();
 
-  if (((humiInt + humiDec + tempInt + tempDec) & 0xff) != checkSum) 
-  {
-     NRF_LOG_INFO("got wrong values\n");
-     return -1;
-  } else {
-    if ( 127 < tempDec ){
-      tempInt=0-tempInt;
-      tempDec=tempDec-128;
+
+static void DHT11_start(void)
+{
+    // setting OUTPUT
+    nrf_gpio_cfg_output(DHT11_BUS_PIN);
+
+    nrf_gpio_pin_set(DHT11_BUS_PIN);
+    nrf_delay_ms(200);
+    nrf_gpio_pin_clear(DHT11_BUS_PIN);
+    nrf_delay_ms(30); // min:10ms, typ:20ms, max:50ms
+    nrf_gpio_pin_set(DHT11_BUS_PIN);
+    nrf_delay_us(40);
+}
+
+static bool DHT11_ready_for(void)
+{
+    uint8_t count = 0;
+
+    // setting INPUT
+    nrf_gpio_cfg_input(DHT11_BUS_PIN, NRF_GPIO_PIN_PULLUP);
+
+    // Low入力待機
+    count = 0;
+    while(1 == nrf_gpio_pin_read(DHT11_BUS_PIN))
+    {
+        nrf_delay_us(1);
+        count += 1;
+        if(count > 200)
+            return false;
     }
-    NRF_LOG_INFO("TEMP: %d.%d  HUMI: %d.%d",tempInt,tempDec,humiInt,humiDec);
-  }
+
+    // High入力待機
+    count = 0;
+    while(0 == nrf_gpio_pin_read(DHT11_BUS_PIN))
+    {
+        nrf_delay_us(1);
+        count += 1;
+        if(count > 200)
+            return false;
+    }
+
+    // Low入力待機
+    count = 0;
+    while(1 == nrf_gpio_pin_read(DHT11_BUS_PIN))
+    {
+        nrf_delay_us(1);
+        count += 1;
+        if(count > 200)
+            return false;
+    }
+
+    return true;
+}
+
+// 端子設定が入力で、端子状態が0で開始することを前提とする
+static uint8_t DHT11_get_bit(void)
+{
+    uint8_t count = 0;
+
+    // High入力待機
+    count = 0;
+    while(0 == nrf_gpio_pin_read(DHT11_BUS_PIN))
+    {
+        nrf_delay_us(1);
+        count += 1;
+        if(count > 200)
+            return 0xFF;
+    }
+
+    // Low入力待機
+    count = 0;
+    while(1 == nrf_gpio_pin_read(DHT11_BUS_PIN))
+    {
+        nrf_delay_us(1);
+        count += 1;
+        if(count > 200)
+            return 0xFF;         
+    }
+
+    // bit 0 or 1 判定
+//    if(count > 65 && count < 75)
+//        return 1;
+//    else if(count > 20 && count < 28)
+//        return 0;
+//    else
+//        return 0xFF;
+    if(count > 28)
+        return 1;
+    else if(count > 10)
+        return 0;
+    else
+        return 0xFF;
+}
+
+static uint8_t DHT11_get_byte(void)
+{
+    uint8_t byte_data = 0;
+    uint8_t bit_data = 0;
+
+    for(int i=0; i<8; i++)
+    {
+        bit_data = DHT11_get_bit();
+        if(0xFF == bit_data)
+            return 0xFF;
+        else
+            byte_data |= (bit_data) << (7-i);
+    }
+
+    return byte_data;
+}
+
+static void DHT11_end(void)
+{
+    // setting OUTPUT
+    nrf_gpio_cfg_output(DHT11_BUS_PIN);
+
+    nrf_gpio_pin_set(DHT11_BUS_PIN);
+}
+
+static bool DHT11_get_data(void)
+{
+    uint8_t dht11_data_buf[5] = {0};
+
+    DHT11_start();
+    if(false == DHT11_ready_for())
+    {
+        DHT11_end();
+        return false;
+    }
+
+    for(int i=0; i<5; i++)
+    {
+        dht11_data_buf[i] = DHT11_get_byte();
+        if(0xFF == dht11_data_buf[i])
+        {
+            nrf_delay_ms(10); //センサからの送信完了を待機
+            DHT11_end();
+            return false;
+        }
+    }
+
+    // データ取得成功した場合
+    humidity_high    = dht11_data_buf[0];
+    humidity_low     = dht11_data_buf[1];
+    temperature_high = dht11_data_buf[2];
+    temperature_low  = dht11_data_buf[3];
+    parity           = dht11_data_buf[4];
+
+    DHT11_end();
+    return true;
+}
+
+static uint8_t dht11_error_count;
+static void DHT11_certainty_get_data(void)
+{
+    uint8_t retry_count = 0;
+
+    while(1)
+    {        
+        //　エラーの場合、100回までやり直す
+        if(false == DHT11_get_data())
+        {
+            retry_count += 1;
+            if(100 == retry_count)
+            {
+                dht11_error_count += 1;
+                return;
+            }
+        }
+        else
+        {
+            printf("temperature is %d.%d C\n",temperature_high, temperature_low);
+            printf("humidity is %d.%d %RH\n",humidity_high, humidity_low);
+            return;
+        }
+    }
 }
 
 
 int main(void)
 {
-    APP_ERROR_CHECK(NRF_LOG_INIT(NULL));
-    NRF_LOG_DEFAULT_BACKENDS_INIT();
-    NRF_LOG_INFO("Temp/Humi sensor DHT11 example started.");
-    nrf_gpio_cfg_input(DHT11_PIN, NRF_GPIO_PIN_PULLUP);
-    SEGGER_RTT_WriteString(0, "DHT11 init complete\n");
-    while (true)
+    gpio_init();
+
+    // Enter main loop.
+    for (;;)
     {
-        DHT11ReadData();
-        nrf_delay_ms(3000);
-        NRF_LOG_FLUSH();
+        DHT11_certainty_get_data();
+        nrf_delay_ms(1000);
+
+        idle_state_handle();
     }
 }
-
