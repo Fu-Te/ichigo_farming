@@ -5,7 +5,7 @@ static uint8_t temperature_low;
 static uint8_t parity;
 
 // DHT11
-#define DHT11_BUS_PIN (41) //P1.09 //32+09=41
+#define DHT11_BUS_PIN (3) //P1.09 //32+09=41
 
 static void gpio_init(void)
 {
