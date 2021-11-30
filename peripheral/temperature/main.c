@@ -1,3 +1,6 @@
+#include<stdint.h>
+#include<stdbool.h>
+#include<stk_errors.h>
 static uint8_t humidity_high;
 static uint8_t humidity_low;
 static uint8_t temperature_high;
@@ -5,7 +8,7 @@ static uint8_t temperature_low;
 static uint8_t parity;
 
 // DHT11
-#define DHT11_BUS_PIN (3) //P1.09 //32+09=41
+#define DHT11_BUS_PIN (4) //P1.09 //32+09=41 今回はp.0.04を使うため0+4
 
 static void gpio_init(void)
 {
