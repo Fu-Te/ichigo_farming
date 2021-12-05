@@ -3,9 +3,9 @@ import asyncio
 
 from bleak import BleakScanner
 
-async def main():
+async def scan():
 	devices = await BleakScanner.discover()
 	for d in devices:
 		print(d)
 
-asyncio.run(main())
+asyncio.run(scan())
