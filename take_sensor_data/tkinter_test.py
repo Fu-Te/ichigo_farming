@@ -2,14 +2,32 @@
 import tkinter
 from discover import scan
 
+
+class Application(tkinter.Frame):
+	def __init__(self,root):
+		super().__init__(root,width=420,height=320,borderwidth=4,relief='groove')
+		self.pack()
+		self.pack_propagate(0)
+		self.root=root
+
+	def end_app(self):
+		quit_btn=tkinter.Button(self)
+		quit_btn['text']='閉じる'
+		quit_btn['command']=self.root.destroy
+		quit_btn.pack(side='bottom')
+
+
 root = tkinter.Tk()
 #タイトルと大きさの設定
 root.title('Test')
-root.geometry("400x300")
+root.geometry("800x600")
+
+app=Application(root=root)
+app.mainloop()
 
 #BLEデバイスのScanボタンの作成
 Button1=tkinter.Button(text=u'Scan',width=50)
-Button1.bind('<Button-1>',scan)
+Button1.bind('<Button-1>',scan())
 Button1.pack()
 
 Button2=tkinter.Button(text=u'温度・湿度',width=50)
