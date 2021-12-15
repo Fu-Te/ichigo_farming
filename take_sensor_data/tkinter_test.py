@@ -10,6 +10,16 @@ class Application(tkinter.Frame):
 		self.pack_propagate(0)
 		self.root=root
 
+	def create_widget(self):
+		#部品の追加
+		self.text_box=tkinter.Entry(self)
+		self.text_box['width']=10
+		self.text_box.pack()
+
+	def input_hundler(self):
+		text=self.text_box.get()
+
+
 	def end_app(self):
 		quit_btn=tkinter.Button(self)
 		quit_btn['text']='閉じる'
