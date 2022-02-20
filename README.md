@@ -43,13 +43,16 @@ https://go.orixrentec.jp/rentecinsight/measure/article-3
 
 [参考](https://houwa-js.co.jp/2018/06/20180629/)
 # 気温、湿度
-## Raspberrypiを用いる場合
-気温、湿度はDHT11を用いて計測します。
-コードは[こちら](https://github.com/szazo/DHT11_Python)を参考に書いています。
-The code is written with reference to [here](https://github.com/szazo/DHT11_Python).
-GND:6pin
-DATA:8pin
-VCC:2pin
+## SiliconLabs EFR32を用いる
+EFR32を用いることによって，湿度温度，照度等を簡単に測定することができる．
+SimplycityStudio5を用いることでマイコンの設定をすることが可能．
+[EFR32](https://www.silabs.com/development-tools/thunderboard/thunderboard-bg22-kit)
+## Raspberrypiでの受信
+EFR32で取得したセンサデータをBluetoothLE(MESH)経由でデータを受け取る予定．
+[Link](https://www.bluetooth.com/wp-content/uploads/2020/04/Developer-Study-Guide-How-to-Deploy-BlueZ-on-a-Raspberry-Pi-Board-as-a-Bluetooth-Mesh-Provisioner.pdf)
+
+
+
 ## nrf52840DKを用いる場合
 nrf52840DKを用いる場合は，[こちら](https://qiita.com/Fu-Te/items/b0485bf5f5a9a1dfe22f)を参考に導入を行ってください
 # これから実装したいこと
@@ -74,11 +77,6 @@ BluetoothMeshについて:https://www.musen-connect.co.jp/blog/course/trial-prod
 猿でもわかるBLE:https://www.musen-connect.co.jp/blog/course/trial-production/ble-beginner-1/
 
 webページで確認センサデータを確認できるようになったら面白いかも？　参考:https://www.iotstarters.com/raspberry-pi-flask-web-server-with-dht11/
-
-# nrf52840dkについて
-nrfデバイスを[これ](https://qiita.com/Fu-Te/items/6a3859c6ca86f99cedf2)を参考にセットアップ．
-nRF Connectを使うと，アドバタイズを出したりできる．
-そこでアドバタイズを出させた後にdiscover.pyを入れると，nrfデバイスのUUID，アドレスを確認できる．　とりあえずここまで
 
 
 
