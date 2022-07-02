@@ -1,7 +1,7 @@
 from http import server
 import bluetooth
 
-server_sock = bluetoth.BluetoothSocket(bluetooth.L2CAP)
+server_sock = bluetooth.BluetoothSocket(bluetooth.L2CAP)
 server_sock.bind(('',0x1001))
 server_sock.listen(1)
 
