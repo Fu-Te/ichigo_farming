@@ -24,6 +24,7 @@ while True:
         
         total += len(data)
         print(f'total byte read:{total}')
+        print(f'data is: {data}')
         
     client_sock.close()
     
