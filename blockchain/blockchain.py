@@ -1,74 +1,37 @@
-import json
-import hashlib
+import datetime
+from sqlite3 import Timestamp
+from typing import Hashable
 
+from black import main
+from block import Block
 
-# Block Object
-class Block:
-    def __init__(self, index, timestamp, data, previousHash=' '):
-        self.index = index
-        self.timestamp = timestamp
-        self.data = data
-        self.previousHash = previousHash
-        self.hash = self.calculateHash()
-
-    def calculateHash(self):
-        return hashlib.sha256(str(self.index) + self.previousHash + self.timestamp + json.dumps(self.data)).hexdigest()
-
-    def printBlock(self):
-        print ("Block #" + str(self.index))
-        print ("Account: " + str(self.data["account"]))
-        print ("Amount: " + str(self.data["amount"]))
-        print ("Block Hash: " + str(self.hash))
-        print ("Block Previous Hash: " + str(self.previousHash))
-        print ("---------------")
-
-
-# Block Chain Object
-class BlockChain:
+class Chain:
     def __init__(self):
-        self.chain = [self.createGenesisBlock()]
-
-    def createGenesisBlock(self):
-        return Block(0, "10/01/2017", "Genesis Block", "0")
-
-    def getLatestBlock(self):
-        return self.chain[len(self.chain)-1]
-
-    def addBlock(self, newBlock):
-        newBlock.previousHash = self.getLatestBlock().hash
-        newBlock.hash = newBlock.calculateHash()
-        self.chain.append(newBlock)
-
-    def isChainValid(self):
-        for i in range (1, len(self.chain)):
-            currentBlock = self.chain[i]
-            previousBlock = self.chain[i-1]
-            # checks whether data has been tampered with
-            if currentBlock.hash != currentBlock.calculateHash():
-                return False
-            if currentBlock.previousHash != previousBlock.hash:
-                return False
-        return True
-
-    def printBlockChain(self):
-        for i in range(1, len(self.chain)):
-            self.chain[i].printBlock()
-
-
-def main():
-    annaCoin = BlockChain()
-    annaCoin.addBlock(Block(1, "10/10/2017", {"account": "Anna","amount": 25,"action": "buy"}))
-    annaCoin.addBlock(Block(2, "11/01/2017", {"account": "Joe","amount": 10,"action": "buy"}))
-    annaCoin.addBlock(Block(3, "12/01/2017", {"account": "Katie","amount": 20,"action": "buy"}))
-    annaCoin.addBlock(Block(4, "12/07/2017", {"account": "Ethan","amount": 4,"action": "buy"}))
-    annaCoin.printBlockChain()
-    # no tampering in our block chain yet so should be true here
-    print ("Chain valid? " + str(annaCoin.isChainValid()))
-    # now lets tamper the block chain and see what happens
-    annaCoin.chain[1].data = {"account": "Anna","amount": 100,"action": "buy"}
-    print ("Chain valid? " + str(annaCoin.isChainValid()))
-
-# Only run the main() function, if this is the root script running.
-# This allows importing this script file to use its functions inside other scripts.
-if __name__ == '__main__':
-    main()
+        self.chain = [gen_genesis_block()]
+        
+    def gen_next_block(self, public_key, transactions):
+        prev_block = self.chain[-1]
+        index = prev_block.index + 1
+        timestamp = datetime.datetime.now()
+        data = transactions
+        hashed_block = prev_block.gen_hashed_block()
+        self.chain.append(Block(index, timestamp, data, hashed_block, public_key))
+        
+    def display_contents(self):
+        for block in self.chain:
+            block.disp_block_info()
+            
+    def output_ledger(self):
+        main_transactions = []
+        for block in self.chain:
+            if block.index != 0:
+                temp_transactions = block.get_block_transactions()
+                for temp_transaction in temp_transactions:
+                    main_transactions.append(temp_transaction)
+                    
+        return main_transactions
+        
+        
+def gen_genesis_block():
+    transaction = ['XX:XX:XX:XX:XX']
+    return Block(0, datetime.datetime.now(), transaction, '0','0')
