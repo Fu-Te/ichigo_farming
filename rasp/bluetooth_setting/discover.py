@@ -19,6 +19,7 @@ async def scan():
         device_name.append(c)
         
         df = pd.DataFrame(list(zip(near_device, device_name)), columns = ['near_device', 'device_name'])
+        print('__________________________________________________________________________________')
         print(df)
     return df
 asyncio.run(scan())
