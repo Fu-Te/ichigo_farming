@@ -16,9 +16,10 @@ RUN pip3 install --upgrade pip && pip3 install --no-cache-dir jupyterlab
 WORKDIR /root
 RUN git clone https://github.com/Fu-Te/BLE_Blockchain
 
-WORKDIR /BLE_Blockchain
+
+
 
 
 
 #requirements.txtなら以下のように
-RUN pip3 install -r ./requirements.txt
+#RUN pip3 install -r requirements.txt
