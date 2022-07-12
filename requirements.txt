@@ -2,3 +2,5 @@ bleak
 pandas
 numpy
 pybluez
+pycrypto
+pycryptodome
