@@ -62,37 +62,35 @@ class MyBlockChain(object):
                     indent=2))
             
             
-
-df1 = pd.read_csv("sample1.csv")
-df2 = pd.read_csv('sample2.csv')
-df3 = pd.read_csv('sample3.csv')
-df4 = pd.read_csv('sample4.csv')
-
-df = pd.concat([df1,df2])
-df = pd.concat([df,df3])
-df = pd.concat([df,df4])
-
-df_count = df['MAC'].value_counts().to_frame()
-df_count=df_count.reset_index()
-
-df['count'] = df_count['MAC']
-
-
-        
 bc = MyBlockChain()
+            
 
+def make_blockchain():
+    df1 = pd.read_csv("sample1.csv")
+    df2 = pd.read_csv('sample2.csv')
+    df3 = pd.read_csv('sample3.csv')
+    df4 = pd.read_csv('sample4.csv')
 
+    df = pd.concat([df1,df2])
+    df = pd.concat([df,df3])
+    df = pd.concat([df,df4])
 
+    df_count = df['MAC'].value_counts().to_frame()
+    df_count=df_count.reset_index()
 
-for gakuseki, mac, count in zip(df['Gakuseki'],df['MAC'],df['count']):
-    if count >= 3: #もう少しかっこよく50%以上を表現できると良い
-        inp = {
-        'GAC': gakuseki,
-        }
-        out = {
-        'MAC': mac,
-        }
-        bc.add_new_block(inp, out)
+    df['count'] = df_count['MAC']
+    df.drop_duplicates(inplace= True)
 
+    for gakuseki, mac, count in zip(df['Gakuseki'],df['MAC'],df['count']):
+        if count >= 3: #もう少しかっこよく50%以上を表現できると良い
+            inp = {
+            'GAC': gakuseki,
+            }
+            out = {
+            'MAC': mac,
+            'count': count
+            }
+            bc.add_new_block(inp, out)
 
+make_blockchain()
 bc.dump()
