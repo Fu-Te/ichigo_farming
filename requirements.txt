@@ -4,3 +4,5 @@ numpy
 pybluez
 pycrypto
 pycryptodome
+ecdsa
+

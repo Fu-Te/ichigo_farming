@@ -16,6 +16,8 @@ blockchainフォルダでは，ブロックとチェーンを作成し，情報�
 Raspberrypi上で動作するBLE関係のプログラム
 discover.pyで周囲のデバイスを探すことが可能．
 
+# lbe
+
 Raspberrypi同士の通信ではl2cap_client.pyとl2cap_server.pyを利用する．
 
 # 使い方
