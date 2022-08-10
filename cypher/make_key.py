@@ -2,7 +2,7 @@ from ecdsa import SigningKey
 from ecdsa import VerifyingKey
 from ecdsa import SECP256k1
 
-def key():
+def make_key():
     secret_key = SigningKey.generate(curve=SECP256k1)
     public_key = secret_key.verifying_key
     secret_b = secret_key.to_string()
@@ -11,3 +11,5 @@ def key():
     public_s = public_b.hex()
     print(secret_s)
     print(public_s)
+    
+    return secret_s, public_s
