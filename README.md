@@ -12,24 +12,28 @@ blockchainフォルダでは，ブロックとチェーンを作成し，情報�
 
 ブロックチェーンをテストするためのDockerを作成している途中である．
 
-# rasp
-Raspberrypi上で動作するBLE関係のプログラム
-discover.pyで周囲のデバイスを探すことが可能．
 
-# lbe
+# ble
 
 Raspberrypi同士の通信ではl2cap_client.pyとl2cap_server.pyを利用する．
+discover.pyでbleブロードキャストをキャッチする．
 
-# 使い方
+
+#　環境構築
 Raspberrypi上で
 ```
 $ sudo apt-get install git
 $ git clone https://github.com/Fu-Te/BLE_Blockchain
 $ cd BLE_Blockchain
-$ pip install -r requirements.txt
 $ sudo apt-get install libatlas-base-dev
 $ sudo apt-get install libjasper-dev
 $ sudo apt-get install bluetooth libbluetooth-dev
-$ sudo python3 -m pip install pybluez
+$ pip install -r requirements.txt
 ```
 上記コマンドを行なうと環境構築が完了する．
+
+# 使い方
+```
+$ python3 main.py
+```
+上記コマンドを実行することで利用することが可能．

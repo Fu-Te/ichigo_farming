@@ -9,7 +9,5 @@ def make_key():
     public_b = public_key.to_string()
     secret_s = secret_b.hex()
     public_s = public_b.hex()
-    print(secret_s)
-    print(public_s)
     
     return secret_s, public_s
