@@ -1,6 +1,0 @@
-import commands
-cmd = "hciconfig"
-device_id = "hci0" 
-status, output = commands.getstatusoutput(cmd)
-bt_mac = output.split("{}:".format(device_id))[1].split("BD Address: ")[1].split(" ")[0].strip()
-print bt_mac
