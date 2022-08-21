@@ -28,6 +28,26 @@ def make_key():
     
     return secret_s, public_s
 
+def make_signature(secret_key, df):
+    """
+    署名を作成するための関数
+    
+    Parameters
+    ----------
+    secret_key : 秘密鍵
+    df : 署名を追加したいデータ
+    
+    Return
+    ----------
+    signature : 署名
+    
+    Notes
+    ----------
+    
+    """
+    signature = secret_key.sign(df)
+    return signature
+
 def judge_signature(signature,df,public_key):
     """
     署名の検証

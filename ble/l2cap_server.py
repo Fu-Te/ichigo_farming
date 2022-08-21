@@ -47,6 +47,7 @@ def l2cap_server():
         client_sock.close()
         
         print('connection closed')
+        return data
         
     server_sock.close()
     

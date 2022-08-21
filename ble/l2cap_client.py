@@ -20,7 +20,7 @@ def l2cap_client(bt_addr,data):
     
     Notes
     ----------
-    
+    タイムアウトを設定したい．一定時間立っても接続できなかった場合はエラーを出るように修正必須
     
     """
     if sys.version < '3':
