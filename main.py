@@ -2,12 +2,12 @@ import asyncio
 
 from rsa import encrypt
 from ble.discover import scan
-from cypher.make_key import make_key
+from cipher.make_key import make_key
 from ble.l2cap_server import l2cap_server
 from ble.l2cap_client import l2cap_client
 #処理を書く
 
-#ビーコンのアドレス一覧
+#ビーコンのアドレス一覧(自分の端末以外のアドレスを指定)
 bt_addrs =['B8:27:EB:7D:E6:F6','E4:5F:01:38:C5:37']
 
 #端末のスキャン
