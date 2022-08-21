@@ -2,9 +2,11 @@ import asyncio
 
 
 from ble.discover import scan
-from cipher.make_key import make_key
+from cipher.cipher import make_key
+from cipher.cipher import judge_signature
 from ble.l2cap_server import l2cap_server
 from ble.l2cap_client import l2cap_client
+
 #処理を書く
 
 #ビーコンのアドレス一覧(自分の端末以外のアドレスを指定)
@@ -22,7 +24,7 @@ secret_key,public_key = make_key()
 signature = secret_key.sign(df)
 
 #署名の検証
-public_key.verify(signature, df)
+result = judge_signature(signature, df , public_key)
 
 
 
