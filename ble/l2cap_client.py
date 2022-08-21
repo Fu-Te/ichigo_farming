@@ -2,6 +2,27 @@ import sys
 import bluetooth
 
 def l2cap_client(bt_addr,data):
+    """ 
+    送信したいデータと送信したい相手を指定することでBLE経由でデータを送信することができる.
+    l2cap_server.pyを実行している相手に対して情報を送信することができる.
+    
+    Parameters
+    ----------
+    bt_addr : integer
+        端末のブルートゥースアドレスを指定する
+    
+    data : data
+        送信したいデータを指定する
+    
+    Return
+    ----------
+    
+    
+    Notes
+    ----------
+    
+    
+    """
     if sys.version < '3':
         input = raw_input
         

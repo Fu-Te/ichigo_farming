@@ -3,6 +3,20 @@ import bluetooth
 
 
 def l2cap_server():
+    """
+    BLE経由で情報を受け取る.
+    l2cap_client.pyで送信されてくるデータを受信することができる.
+    
+    Parameters
+    ----------
+    
+    Return
+    ----------
+    
+    Notes
+    
+     
+    """
     server_sock = bluetooth.BluetoothSocket(bluetooth.L2CAP)
     server_sock.bind(('',0x1001))
     server_sock.listen(1)
