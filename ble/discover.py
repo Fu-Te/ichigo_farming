@@ -5,6 +5,21 @@ import pandas as pd
 from bleak import BleakScanner
 
 async def scan():
+    """
+    周囲のデバイスをスキャンし，端末名とアドレスをデータフレーム形式で出力する
+    
+    Parameters
+    ----------
+    
+    
+    Return
+    ----------
+    df : DataFrame
+        周囲のBLEでスキャンできるすべての端末情報
+    
+    Notes
+    ---------- 
+    """
     raw_data = []
     near_device = []
     device_name = []
