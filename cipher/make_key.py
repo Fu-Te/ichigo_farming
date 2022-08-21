@@ -11,3 +11,6 @@ def make_key():
     public_s = public_b.hex()
     
     return secret_s, public_s
+
+def signature(signature,df):
+    

@@ -1,6 +1,6 @@
 import asyncio
 
-from rsa import encrypt
+
 from ble.discover import scan
 from cipher.make_key import make_key
 from ble.l2cap_server import l2cap_server
@@ -17,6 +17,14 @@ print(df)
 
 #鍵の作成
 secret_key,public_key = make_key()
+
+#署名の追加
+signature = secret_key.sign(df)
+
+#署名の検証
+public_key.verify(signature, df)
+
+
 
 print(secret_key)
 print(public_key)
