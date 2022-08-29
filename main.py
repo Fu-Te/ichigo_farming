@@ -6,8 +6,8 @@ from cipher.cipher import make_key
 from cipher.cipher import judge_signature
 from cipher.cipher import make_signature
 
-from ble.l2cap_server import l2cap_server
-from ble.l2cap_client import l2cap_client
+#from ble.l2cap_server import l2cap_server
+#from ble.l2cap_client import l2cap_client
 
 #設定用
 
@@ -15,9 +15,12 @@ from ble.l2cap_client import l2cap_client
 bt_addrs =['B8:27:EB:7D:E6:F6','E4:5F:01:38:C5:37']
 
 #送信するデータの格納用リスト
+#[df, public_key, signature]
 send_data_list = []
 
 #受け取る情報の格納用リスト
+#[[df, public_key, signature],[df, public_key, signature]]のような構成になる．
+#取り出すためにはreceive_data_list[1][0]みたいな感じで使う
 receive_data_list = []
 
 #鍵の作成
@@ -42,7 +45,9 @@ send_data_list.append(df)
 send_data_list.append(public_key)
 send_data_list.append(signature)
 
+print(send_data_list)
 
+"""
 #データの送信
 for bt_addr in bt_addrs:
     l2cap_client(bt_addr, send_data_list)
@@ -56,8 +61,9 @@ while True:
     count = count + 1
     if count > 4:
         break
-    
+"""
+
 #署名の検証
 result = judge_signature(signature, df , public_key)
-    
+print(result)
 
