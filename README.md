@@ -37,3 +37,6 @@ $ pip install -r requirements.txt
 $ python3 main.py
 ```
 上記コマンドを実行することで利用することが可能．
+
+# pytest
+pytestを用いたテストを考えている
