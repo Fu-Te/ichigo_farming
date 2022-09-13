@@ -1,4 +1,5 @@
 import asyncio
+import json
 
 
 from ble.discover import scan
@@ -12,7 +13,14 @@ from cipher.cipher import make_signature
 #設定用
 
 #ビーコンのアドレス一覧(自分の端末以外のアドレスを指定)
-bt_addrs =['B8:27:EB:7D:E6:F6','E4:5F:01:38:C5:37']
+json_file = open('settings.json', 'r')
+json_data = json.load(json_file)
+
+bt_addrs =[]
+
+for bt_addr in json_data.values():
+    bt_addrs.append(bt_addr)
+
 
 #送信するデータの格納用リスト
 #[df, public_key, signature]
