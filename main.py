@@ -1,8 +1,11 @@
 import asyncio
 import json
+import threading
 
 
 from ble.discover import scan
+from ble.l2cap_client import l2cap_client_for_list
+from ble.l2cap_server import l2cap_server_main
 from cipher.cipher import make_key
 from cipher.cipher import judge_signature
 from cipher.cipher import make_signature
@@ -55,21 +58,16 @@ send_data_list.append(signature)
 
 print(send_data_list)
 
-"""
-#データの送信
-for bt_addr in bt_addrs:
-    l2cap_client(bt_addr, send_data_list)
 
+#データの送信
+client_thread = threading.Thread(target=l2cap_client_for_list(bt_addrs,send_data_list))
 
 #データの受信
-count = 0
-while True:
-    data = l2cap_server()
-    receive_data_list.append(data)
-    count = count + 1
-    if count > 4:
-        break
-"""
+server_thread = threading.Thread(target=l2cap_server_main(receive_data_list))
+
+#送受信の実行
+client_thread.start()
+server_thread.start()
 
 #署名の検証
 result = judge_signature(signature, df , public_key)
