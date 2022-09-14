@@ -18,6 +18,13 @@ blockchainフォルダでは，ブロックとチェーンを作成し，情報�
 Raspberrypi同士の通信ではl2cap_client.pyとl2cap_server.pyを利用する．
 discover.pyでbleブロードキャストをキャッチする．
 
+raspberrypiのbleではセキュリティの観点からか，ble検索にかからないようになっているので，定期的に以下のコマンドを実行する必要がある.
+つまりサーバーとして情報を受け取るためには以下のコマンドを毎回行う必要があるので，サーバを起動するときに以下のコマンドを自動的に実行するように変更する必要がある．
+```
+$ bluetoothctl
+$ discoverable on
+```
+
 
 #　環境構築
 Raspberrypi上で
