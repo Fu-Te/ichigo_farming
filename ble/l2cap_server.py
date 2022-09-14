@@ -50,7 +50,17 @@ def l2cap_server():
         return data
         
     server_sock.close()
-    
-    return data
+
+
+def l2cap_server_main(receive_data_list):
+    count = 0
+    while True:
+        data = l2cap_server()
+        receive_data_list.append(data)
+        count = count + 1
+        if count > 4:
+            break
+
+    return receive_data_list
 
 data = l2cap_server()

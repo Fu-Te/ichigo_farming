@@ -49,6 +49,19 @@ def l2cap_client(bt_addr,data):
         
     sock.close()
     
+def l2cap_client_for_list(bt_addrs,send_data_list):
+    """ 
+    bt_addrsを受け取り繰り返しで使う．
+    
+    Parameters
+    ----------
+    bt_addrs : bluetoothアドレスが格納されたリスト
+    send_data_list : 送りたい情報
+    """
+    #データの送信
+    for bt_addr in bt_addrs:
+        l2cap_client(bt_addr, send_data_list)
+    
 
 
 bt_addr_list = ['B8:27:EB:7D:E6:F6','E4:5F:01:38:C5:37']
