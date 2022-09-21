@@ -62,11 +62,3 @@ def l2cap_client_for_list(bt_addrs,send_data_list):
     for bt_addr in bt_addrs:
         l2cap_client(bt_addr, send_data_list)
     
-
-
-bt_addr_list = ['B8:27:EB:7D:E6:F6','E4:5F:01:38:C5:37']
-bt_addr = 'E4:5F:01:38:C5:37'
-data = 'aaa'
-
-
-l2cap_client(bt_addr,data)
