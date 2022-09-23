@@ -25,6 +25,9 @@ $ bluetoothctl
 $ discoverable on
 ```
 
+# main
+bluetoothでの同時送受信が困難になるのなら，ラウンドロビン方式（1が送ってる時は他のデバイスは送らない）を取る必要がある
+
 
 #　環境構築
 Raspberrypi上で
