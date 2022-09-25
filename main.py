@@ -60,14 +60,11 @@ print(send_data_list)
 
 
 #データの送信
-client_thread = threading.Thread(target=l2cap_client_for_list(bt_addrs,send_data_list))
+l2cap_client_for_list(bt_addrs, send_data_list)
 
 #データの受信
-server_thread = threading.Thread(target=l2cap_server_main(receive_data_list))
+l2cap_server_main(receive_data_list, len(bt_addrs))
 
-#送受信の実行
-client_thread.start()
-server_thread.start()
 
 #署名の検証
 result = judge_signature(signature, df , public_key)

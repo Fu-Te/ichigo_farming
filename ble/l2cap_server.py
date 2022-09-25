@@ -52,13 +52,13 @@ def l2cap_server():
     server_sock.close()
 
 
-def l2cap_server_main(receive_data_list):
+def l2cap_server_main(receive_data_list,len_of_device):
     count = 0
     while True:
         data = l2cap_server()
         receive_data_list.append(data)
         count = count + 1
-        if count > 4:
+        if count == len_of_device:
             break
 
     return receive_data_list
