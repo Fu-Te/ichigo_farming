@@ -61,6 +61,5 @@ def l2cap_server_main(receive_data_list,len_of_device):
         if count == len_of_device:
             break
 
-    return receive_data_list
 
 data = l2cap_server()
