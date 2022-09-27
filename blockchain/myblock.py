@@ -13,7 +13,7 @@ class MyBlockChain(object):
     def add_new_block(self, inp, outp):
         # トランザクションを生成する
         new_transaction = self.__create_new_transaction(inp, outp)
-       
+
         # 前のブロックのハッシュを取得。最初だけ固定値
         if len(self.chain) > 0:
             prev_hash = self.chain[-1]['block_header']['tran_hash']
@@ -46,7 +46,7 @@ class MyBlockChain(object):
     def __calc_tran_hash(self, new_transaction):
         tran_string = json.dumps(new_transaction, sort_keys=True).encode()
         return self.__hash(tran_string)
-    
+
     def __hash(self, str_seed):
         return hashlib.sha256(str(str_seed).encode()).hexdigest()
 
@@ -60,10 +60,10 @@ class MyBlockChain(object):
                     self.chain[block_index],
                     sort_keys=False,
                     indent=2))
-            
-            
+
+
 bc = MyBlockChain()
-            
+
 
 def make_blockchain():
     df1 = pd.read_csv("sample1.csv")
@@ -71,26 +71,27 @@ def make_blockchain():
     df3 = pd.read_csv('sample3.csv')
     df4 = pd.read_csv('sample4.csv')
 
-    df = pd.concat([df1,df2])
-    df = pd.concat([df,df3])
-    df = pd.concat([df,df4])
+    df = pd.concat([df1, df2])
+    df = pd.concat([df, df3])
+    df = pd.concat([df, df4])
 
     df_count = df['MAC'].value_counts().to_frame()
-    df_count=df_count.reset_index()
+    df_count = df_count.reset_index()
 
     df['count'] = df_count['MAC']
-    df.drop_duplicates(inplace= True)
+    df.drop_duplicates(inplace=True)
 
-    for gakuseki, mac, count in zip(df['Gakuseki'],df['MAC'],df['count']):
-        if count >= 3: #もう少しかっこよく50%以上を表現できると良い
+    for gakuseki, mac, count in zip(df['Gakuseki'], df['MAC'], df['count']):
+        if count >= 3:  # もう少しかっこよく50%以上を表現できると良い
             inp = {
-            'GAC': gakuseki,
+                'GAC': gakuseki,
             }
             out = {
-            'MAC': mac,
-            'count': count
+                'MAC': mac,
+                'count': count
             }
             bc.add_new_block(inp, out)
+
 
 make_blockchain()
 bc.dump()
