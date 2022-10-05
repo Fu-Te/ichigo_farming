@@ -65,7 +65,8 @@ class MyBlockChain(object):
 bc = MyBlockChain()
 
 
-def make_blockchain():
+def test_make_blockchain():
+
     df1 = pd.read_csv("sample1.csv")
     df2 = pd.read_csv('sample2.csv')
     df3 = pd.read_csv('sample3.csv')
@@ -93,5 +94,32 @@ def make_blockchain():
             bc.add_new_block(inp, out)
 
 
-make_blockchain()
+def make_blockchain(receive_data_list):
+    df_list = []
+    for i in receive_data_list:
+        df_list.append(i[0])
+    df = pd.DataFrame()
+
+    for i in df_list:
+        df = pd.concat([df, i])
+
+    df_count = df['MAC'].value_counts().to_frame()
+    df_count = df_count.reset_index()
+
+    df['count'] = df_count['MAC']
+    df.drop_duplicates(inplace=True)
+
+    for gakuseki, mac, count in zip(df['Gakuseki'], df['MAC'], df['count']):
+        if count / len(df_list) >= len(df_list)/2:
+            inp = {
+                'GAK': gakuseki,
+            }
+            out = {
+                'MAC': mac,
+                'count': count
+            }
+            bc.add_new_block(inp, out)
+
+
+test_make_blockchain()
 bc.dump()
