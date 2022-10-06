@@ -21,9 +21,9 @@ def toFour():
 #送信はまとめて
 def SEND():
     with ThreadPoolExecutor(max_workers=3) as executor:
-        executor.submit(toTw)
-        executor.submit(toTH)
-        executor.submit(toFo)
+        executor.submit(toTwo())
+        executor.submit(toThree())
+        executor.submit(toFour())
 
 #受信側　それぞれから受信×3 
 # これ同時にやったら良い感じにならない？
