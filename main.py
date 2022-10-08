@@ -9,6 +9,7 @@ from ble.l2cap_server import l2cap_server_main
 from cipher.cipher import make_key
 from cipher.cipher import judge_signature
 from cipher.cipher import make_signature
+import blockchain.myblock
 
 #from ble.l2cap_server import l2cap_server
 #from ble.l2cap_client import l2cap_client
