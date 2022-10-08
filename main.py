@@ -79,3 +79,4 @@ print(result)
 #blockchainに追加
 blockchain = blockchain.myblock.MyBlockChain()
 blockchain.myblock.make_blockchain(receive_data_list)
+blockchain.dump()
