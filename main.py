@@ -74,3 +74,8 @@ server_thread.start()
 # 署名の検証
 result = judge_signature(signature, df, public_key)
 print(result)
+
+
+#blockchainに追加
+blockchain = blockchain.myblock.MyBlockChain()
+blockchain.myblock.make_blockchain(receive_data_list)
