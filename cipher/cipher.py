@@ -1,6 +1,7 @@
 from ecdsa import SigningKey
 from ecdsa import VerifyingKey
 from ecdsa import SECP256k1
+import io
 
 
 def make_key():
@@ -22,12 +23,8 @@ def make_key():
     """
     secret_key = SigningKey.generate(curve=SECP256k1)
     public_key = secret_key.verifying_key
-    secret_b = secret_key.to_string()
-    public_b = public_key.to_string()
-    secret_s = secret_b.hex()
-    public_s = public_b.hex()
 
-    return secret_s, public_s
+    return secret_key, public_key
 
 
 def make_signature(secret_key, df):
@@ -47,6 +44,14 @@ def make_signature(secret_key, df):
     ----------
 
     """
+    
+    #dfをbytes形式に変換
+    towrite = io.BytesIO()
+    df.to_excel(towrite)
+    towrite.seek(0)
+    df = towrite.getvalue()
+    
+    
     signature = secret_key.sign(df)
     return signature
 
@@ -74,11 +79,18 @@ def judge_signature(signature, df, public_key):
     ---------
 
     """
-    try:
-        public_key.verify(signature, df)
+    
+    #dfをbytes形式に変換
+    towrite = io.BytesIO()
+    df.to_excel(towrite)
+    towrite.seek(0)
+    df = towrite.getvalue()
+    
+    #TorF
+    result = public_key.verify(signature, df)
+    if result == True:
         print('署名が正しいです')
-        return True
-
-    except BadSignatureError:
+        return result
+    else:
         print('署名が正しくありません．')
-        return False
+        return result
