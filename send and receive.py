@@ -6,17 +6,17 @@ from concurrent.futures import ThreadPoolExecutor
 def toTwo():
     client_thread = threading.Thread(
     target=l2cap_client_for_list(
-        bt_addrs, send_data_list))
+        bt_addrs[0], send_data_list))
 
 def toThree():
     client_thread = threading.Thread(
     target=l2cap_client_for_list(
-        bt_addrs, send_data_list))
+        bt_addrs[1], send_data_list))
 
 def toFour():
     client_thread = threading.Thread(
     target=l2cap_client_for_list(
-        bt_addrs, send_data_list))
+        bt_addrs[2], send_data_list))
 
 #送信はまとめて
 def SEND():
