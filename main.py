@@ -72,8 +72,13 @@ client_thread.start()
 server_thread.start()
 
 # 署名の検証
-result = judge_signature(signature, df, public_key)
-print(result)
+count = 0
+#それぞれの端末の情報について署名を検証し，結果をリストに格納する．
+for i in receive_data_list:
+    result = judge_signature(i[2], i[0], i[1])
+    receive_data_list[count].append(result)
+    count = count + 1
+    print(result)
 
 
 #blockchainに追加
