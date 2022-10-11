@@ -72,7 +72,9 @@ client_thread.start()
 server_thread.start()
 
 # 署名の検証
-result = judge_signature(signature, df, public_key)
+for i in receive_data_list:
+    result = judge_signature(i[2], i[0], i[1])
+    
 print(result)
 
 
