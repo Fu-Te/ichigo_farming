@@ -6,10 +6,13 @@ import threading
 from ble.discover import scan
 from ble.l2cap_client import l2cap_client_for_list
 from ble.l2cap_server import l2cap_server_main
+from ble.start_discoverable import start_discoverable
+
 from cipher.cipher import make_key
 from cipher.cipher import judge_signature
 from cipher.cipher import make_signature
 import blockchain.myblock
+
 
 #from ble.l2cap_server import l2cap_server
 #from ble.l2cap_client import l2cap_client
@@ -65,6 +68,8 @@ client_thread = threading.Thread(
         bt_addrs, send_data_list))
 
 # データの受信
+#discoverable on
+start_discoverable()
 server_thread = threading.Thread(target=l2cap_server_main(receive_data_list))
 
 # 送受信の実行
