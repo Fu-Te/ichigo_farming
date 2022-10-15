@@ -58,7 +58,7 @@ pytestを用いたテストを考えている
 ↓
 秘密鍵，公開鍵の作成
 ↓
-※Discoverable on
+Discoverable on
 ↓
 bt端末をスキャン
 ↓
