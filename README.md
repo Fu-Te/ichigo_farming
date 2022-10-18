@@ -80,3 +80,17 @@ bt端末をスキャン
 or
 ※csvデータをLAN内から取得できるように
 ```
+
+# 変数
+# 送信するデータの格納用リスト
+
+#　[df, public_key, signature]を格納します
+send_data_list = []
+例)[[df,public_key,signature],[df1,public_key1,signature1]]
+send_data_list[[0][1]]だと，public_keyがでる
+
+
+# 受け取る情報の格納用リスト
+# [[df, public_key, signature],[df, public_key, signature]]のような構成になる．
+# 取り出すためにはreceive_data_list[1][0]みたいな感じで使う
+receive_data_list = []
