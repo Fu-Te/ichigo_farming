@@ -38,7 +38,7 @@ $ cd BLE_Blockchain
 $ sudo apt-get install libatlas-base-dev
 $ sudo apt-get install libjasper-dev
 $ sudo apt-get install bluetooth libbluetooth-dev
-$ pip install -r requirements.txt
+$ python3 install_package.py
 ```
 上記コマンドを行なうと環境構築が完了する．
 
