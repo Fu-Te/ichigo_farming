@@ -12,6 +12,7 @@ from cipher.cipher import make_key
 from cipher.cipher import judge_signature
 from cipher.cipher import make_signature
 import blockchain.myblock
+import delete_excess_data
 
 
 #from ble.l2cap_server import l2cap_server
@@ -47,6 +48,7 @@ secret_key, public_key = make_key()
 # 他の端末に送信する情報の作成
 # 端末のスキャン
 df = asyncio.run(scan())
+df = delete_excess_data(df)
 
 print(df)
 
