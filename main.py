@@ -11,7 +11,7 @@ from ble.start_discoverable import start_discoverable
 from cipher.cipher import make_key
 from cipher.cipher import judge_signature
 from cipher.cipher import make_signature
-import blockchain.myblock
+from blockchain.myblock import make_blockchain
 import delete_excess_data
 
 
@@ -89,6 +89,6 @@ for i in receive_data_list:
 
 
 #blockchainに追加
-blockchain = blockchain.myblock.MyBlockChain()
+blockchain = make_blockchain(receive_data_list)
 blockchain.myblock.make_blockchain(receive_data_list)
 blockchain.dump()
