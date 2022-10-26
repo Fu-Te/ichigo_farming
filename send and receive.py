@@ -3,20 +3,20 @@
 from concurrent.futures import ThreadPoolExecutor
 
 # ラズパイそれぞれに送信する関数
-def toTwo(bt_addrs, send_data_list):
+def toTwo(bt_addrs, data):
     client_thread = threading.Thread(
-    target=l2cap_client_for_list(
-        bt_addrs[0], send_data_list))
+    target=l2cap_client(
+        bt_addrs[0], send_data_list[0][0]))
 
-def toThree(bt_addrs, send_data_list):
+def toThree(bt_addrs, data):
     client_thread = threading.Thread(
-    target=l2cap_client_for_list(
-        bt_addrs[1], send_data_list))
+    target=l2cap_client(
+        bt_addrs[1], send_data_list[0][0]))
 
-def toFour(bt_addrs, send_data_list):
+def toFour(bt_addrs, data):
     client_thread = threading.Thread(
-    target=l2cap_client_for_list(
-        bt_addrs[2], send_data_list))
+    target=l2cap_client(
+        bt_addrs[2], send_data_list[0][0]))
 
 #送信はまとめて
 def SEND():
