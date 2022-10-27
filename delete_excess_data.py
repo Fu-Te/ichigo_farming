@@ -3,6 +3,16 @@ from ble.discover import scan
 import asyncio
 
 def delete_excess_data(df):
+    '''
+    Parameters
+    ----------
+    df : DataFrame,scanで作成したデータフレーム
+    
+    Return
+    ----------
+    df : 事前登録されているもののみが残っているデータフレーム
+    '''
+    
 
     preliminary_data = pd.read_csv('data_folder/事前取得データ.csv')
 
