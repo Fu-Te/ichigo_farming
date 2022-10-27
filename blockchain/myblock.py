@@ -108,6 +108,7 @@ def make_blockchain(receive_data_list):
 
     df['count'] = df_count['MAC']
     df.drop_duplicates(inplace=True)
+    df = df.sort_values('Gakuseki')
 
     for gakuseki, mac, count in zip(df['Gakuseki'], df['MAC'], df['count']):
         if count / len(df_list) >= len(df_list)/2:
