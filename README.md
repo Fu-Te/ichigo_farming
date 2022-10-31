@@ -28,8 +28,9 @@ $ discoverable on
 # main
 bluetoothでの同時送受信が困難になるのなら，ラウンドロビン方式（1が送ってる時は他のデバイスは送らない）を取る必要がある
 
+# セットアップ
 
-#　環境構築
+##　環境構築
 Raspberrypi上で
 ```
 $ sudo apt-get install git
@@ -39,14 +40,13 @@ $ python3 install_package.py
 ```
 上記コマンドを行なうと環境構築が完了する．
 
-# 使い方
+## 使い方
 ```
 $ python3 main.py
 ```
 上記コマンドを実行することで利用することが可能．
 
-# pytest
-pytestを用いたテストを考えている
+
 
 # 処理の流れ
 ※の部分はまだ開発が終わっていない部分
