@@ -36,5 +36,7 @@ async def scan():
     df = pd.DataFrame(list(zip(near_device, device_name)),
                         columns=['near_device', 'device_name'])
     
-
     return df
+
+df = scan()
+print(df)
