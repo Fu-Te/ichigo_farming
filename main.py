@@ -1,7 +1,7 @@
 import asyncio
 import json
 import threading
-
+import pandas as pd
 
 from ble.discover import scan
 from ble.l2cap_client import l2cap_client_for_list
@@ -47,7 +47,9 @@ secret_key, public_key = make_key()
 
 # 他の端末に送信する情報の作成
 # 端末のスキャン
-df = asyncio.run(scan())
+bt_addrs,device_name = asyncio.run(scan())
+df = pd.DataFrame(list(zip(bt_addrs, device_name)),
+                        columns=['bt_addrs', 'device_name'])
 df = delete_excess_data(df)
 
 print(df)

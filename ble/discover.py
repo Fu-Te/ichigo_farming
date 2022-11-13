@@ -22,7 +22,7 @@ async def scan():
     ----------
     """
     raw_data = []
-    near_device = []
+    bt_addrs = []
     device_name = []
 
     devices = await BleakScanner.discover()
@@ -30,13 +30,10 @@ async def scan():
         raw_data.append(d)
 
         d, c = str(d).split(': ')
-        near_device.append(d)
+        bt_addrs.append(d)
         device_name.append(c)
 
     df = pd.DataFrame(list(zip(near_device, device_name)),
                         columns=['near_device', 'device_name'])
     
-    return df
-
-df = scan()
-print(df)
+    return bt_addrs,device_name
