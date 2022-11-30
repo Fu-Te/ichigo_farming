@@ -1,19 +1,21 @@
 #案１　同時or　
 #送信側　1→234に送る仮定　
 from concurrent.futures import ThreadPoolExecutor
+import threading
+from ble.l2cap_client import l2cap_client
 
 # ラズパイそれぞれに送信する関数
-def toTwo(bt_addrs, data):
+def toTwo(bt_addrs, send_data_list):
     client_thread = threading.Thread(
     target=l2cap_client(
-        bt_addrs[0], send_data_list)
+        bt_addrs[0], send_data_list))
 
-def toThree(bt_addrs, data):
+def toThree(bt_addrs, send_data_list):
     client_thread = threading.Thread(
     target=l2cap_client(
         bt_addrs[1], send_data_list))
 
-def toFour(bt_addrs, data):
+def toFour(bt_addrs, send_data_list):
     client_thread = threading.Thread(
     target=l2cap_client(
         bt_addrs[2], send_data_list))
