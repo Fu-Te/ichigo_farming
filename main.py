@@ -66,6 +66,9 @@ send_data_list.append(signature)
 print(send_data_list)
 
 
+#↑まで完成
+#以下のプログラムの改善が必要，部品はまあまあできている
+
 # データの送信
 client_thread = threading.Thread(
     target=l2cap_client_for_list(
