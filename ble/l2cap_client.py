@@ -29,9 +29,6 @@ def l2cap_client(bt_addr, data):
 
     sock = bluetooth.BluetoothSocket(bluetooth.L2CAP)
 
-    if len(sys.argv) < 2:
-        print('usage: l2capclient.py <addr>')
-        sys.exit(2)
 
     port = 0x1001
 
