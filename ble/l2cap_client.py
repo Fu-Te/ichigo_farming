@@ -39,7 +39,7 @@ def l2cap_client(bt_addr, data):
 
     #sock.send(data)
     #data = sock.recv(1024)
-    print(f'Data received:{str(data)}')
+    print(f'送信完了')
 
     sock.close()
 
