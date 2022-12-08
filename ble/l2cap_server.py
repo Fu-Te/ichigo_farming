@@ -24,7 +24,7 @@ def l2cap_server():
     while True:
         print('送信されてくるデータを待ってます')
         client_sock, address = server_sock.accept()
-        print(f'データを受け取りました{str(address)}')
+        print(f'接続を確認{str(address)}')
 
         print('データを受信中')
 
