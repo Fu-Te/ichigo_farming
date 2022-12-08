@@ -58,3 +58,5 @@ def l2cap_client_for_list(bt_addrs, send_data_list):
     # データの送信
     for bt_addr in bt_addrs:
         l2cap_client(bt_addr, send_data_list)
+
+l2cap_client('E4:5F:01:38:C5:37','aiueo')
