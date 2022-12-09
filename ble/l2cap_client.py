@@ -37,7 +37,7 @@ def l2cap_client(bt_addr, data):
     sock.connect((bt_addr, port))
 
 
-    #sock.send(data)
+    sock.send(data)
     #data = sock.recv(1024)
     print(f'送信完了')
 
