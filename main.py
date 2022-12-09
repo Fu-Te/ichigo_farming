@@ -77,11 +77,10 @@ client_thread = threading.Thread(
 # データの受信
 #discoverable on
 start_discoverable()
-server_thread = threading.Thread(target=l2cap_server_main(receive_data_list))
+
 
 # 送受信の実行
-client_thread.start()
-server_thread.start()
+
 
 # 署名の検証
 count = 0
