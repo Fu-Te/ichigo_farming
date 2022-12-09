@@ -12,7 +12,7 @@ from cipher.cipher import make_key
 from cipher.cipher import judge_signature
 from cipher.cipher import make_signature
 import blockchain.myblock
-import delete_excess_data
+from delete_excess_data import delete_excess_data
 from send_and_receive import SEND
 
 #from ble.l2cap_server import l2cap_server
