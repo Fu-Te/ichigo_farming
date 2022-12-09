@@ -62,5 +62,5 @@ def l2cap_server_main(receive_data_list,len_of_device):
             break
 
 
-
+start_discoverable()
 data = l2cap_server()
