@@ -77,7 +77,7 @@ start_discoverable()
 
 
 # 送受信の実行
-SEND()
+SEND(bt_addrs,send_data_list)
 receive_data_list.append(l2cap_server())
 receive_data_list.append(l2cap_server())
 receive_data_list.append(l2cap_server())

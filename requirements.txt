@@ -5,4 +5,4 @@ pybluez
 pycrypto
 pycryptodome
 ecdsa
-
+openpyxl
