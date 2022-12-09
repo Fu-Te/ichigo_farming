@@ -85,7 +85,7 @@ start_discoverable()
 receive_data_list.append(l2cap_server())
 time.sleep(30)
 SEND(tanmatsu_bt_addrs,send_data_list)
-time.sleep(30)
+
 start_discoverable()
 receive_data_list.append(l2cap_server())
 
