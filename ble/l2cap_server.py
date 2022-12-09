@@ -1,6 +1,6 @@
 from http import server
 import bluetooth
-from start_discoverable import start_discoverable
+
 
 def l2cap_server():
     """
