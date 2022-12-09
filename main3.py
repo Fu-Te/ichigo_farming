@@ -24,10 +24,10 @@ from send_and_receive import SEND
 json_file = open('settings3.json', 'r')
 json_data = json.load(json_file)
 
-bt_addrs = []
+tanmatsu_bt_addrs = []
 
 for bt_addr in json_data.values():
-    bt_addrs.append(bt_addr)
+    tanmatsu_bt_addrs.append(bt_addr)
 
 
 # 送信するデータの格納用リスト
@@ -79,7 +79,7 @@ start_discoverable()
 
 receive_data_list.append(l2cap_server())
 receive_data_list.append(l2cap_server())
-SEND()
+SEND(tanmatsu_bt_addrs,send_data_list)
 receive_data_list.append(l2cap_server())
 
 # 署名の検証
