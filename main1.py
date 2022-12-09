@@ -29,6 +29,7 @@ bt_addrs = []
 for bt_addr in json_data.values():
     bt_addrs.append(bt_addr)
 
+print(bt_addrs)
 
 # 送信するデータの格納用リスト
 #[df, public_key, signature]
