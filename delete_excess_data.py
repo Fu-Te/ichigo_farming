@@ -23,5 +23,3 @@ def delete_excess_data(df):
     return df
 
 
-df = asyncio.run(scan())
-delete_excess_data(df)
