@@ -2,7 +2,7 @@ from ecdsa import SigningKey
 from ecdsa import VerifyingKey
 from ecdsa import SECP256k1
 import io
-
+import openpyxl
 
 def make_key():
     """
