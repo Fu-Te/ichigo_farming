@@ -122,5 +122,3 @@ def make_blockchain(receive_data_list):
             bc.add_new_block(inp, out)
 
 
-test_make_blockchain()
-bc.dump()
