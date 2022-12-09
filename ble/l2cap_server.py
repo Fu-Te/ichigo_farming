@@ -45,6 +45,7 @@ def l2cap_server():
             print(f'data is: {data}')
 
         client_sock.close()
+        data = data.decode()
         print(f'データを受信しました:{data}')
         print('connection closed')
         return data
