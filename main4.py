@@ -5,7 +5,7 @@ import pandas as pd
 
 from ble.discover import scan
 from ble.l2cap_client import l2cap_client_for_list
-from ble.l2cap_server import l2cap_server_main
+from ble.l2cap_server import l2cap_server
 from ble.start_discoverable import start_discoverable
 
 from cipher.cipher import make_key
