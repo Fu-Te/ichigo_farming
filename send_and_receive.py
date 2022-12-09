@@ -26,9 +26,9 @@ def SEND(bt_addrs,send_data_list):
     with ThreadPoolExecutor(max_workers=3) as executor:
         executor.submit(toTwo(bt_addrs,send_data_list))
         executor.submit(toThree(bt_addrs,send_data_list))
-        #executor.submit(toFour(bt_addrs,send_data_list))
+        executor.submit(toFour(bt_addrs,send_data_list))
 
-#受信側　それぞれから受信×3 
+#受信側　それぞれから受信×3
 # これ同時にやったら良い感じにならない？
 # 多分必要なもの：それぞれの流れを合わせる何か？いらない？
 # 4基で試してみたい　（意味あるかないかも含めて）
@@ -42,10 +42,10 @@ if __name__ == '__main__':
     json_data = json.load(json_file)
 
     bt_addrs = []
-    
+
     send_data = 'ewqkormwqim'
 
     for bt_addr in json_data.values():
         bt_addrs.append(bt_addr)
-        
+
     SEND(bt_addrs,send_data)

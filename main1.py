@@ -13,7 +13,7 @@ from cipher.cipher import judge_signature
 from cipher.cipher import make_signature
 import blockchain.myblock
 import delete_excess_data
-
+from send_and_receive import SEND
 
 #from ble.l2cap_server import l2cap_server
 #from ble.l2cap_client import l2cap_client
@@ -69,10 +69,7 @@ print(send_data_list)
 #↑まで完成
 #以下のプログラムの改善が必要，部品はまあまあできている
 
-# データの送信
-client_thread = threading.Thread(
-    target=l2cap_client_for_list(
-        bt_addrs, send_data_list))
+
 
 # データの受信
 #discoverable on
@@ -80,7 +77,10 @@ start_discoverable()
 
 
 # 送受信の実行
-
+SEND()
+receive_data_list.append(l2cap_server())
+receive_data_list.append(l2cap_server())
+receive_data_list.append(l2cap_server())
 
 # 署名の検証
 count = 0
