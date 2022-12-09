@@ -14,6 +14,7 @@ from cipher.cipher import make_signature
 import blockchain.myblock
 from delete_excess_data import delete_excess_data
 from send_and_receive import SEND
+import time
 
 #from ble.l2cap_server import l2cap_server
 #from ble.l2cap_client import l2cap_client
@@ -78,11 +79,11 @@ start_discoverable()
 # 送受信の実行
 
 receive_data_list.append(l2cap_server())
-time.sleep(180)
+time.sleep(30)
 receive_data_list.append(l2cap_server())
-time.sleep(180)
+time.sleep(30)
 receive_data_list.append(l2cap_server())
-time.sleep(180)
+time.sleep(30)
 SEND(tanmatsu_bt_addrs,send_data_list)
 # 署名の検証
 count = 0
