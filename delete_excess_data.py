@@ -1,5 +1,4 @@
 import pandas as pd
-from ble.discover import scan
 import asyncio
 
 def delete_excess_data(df):
