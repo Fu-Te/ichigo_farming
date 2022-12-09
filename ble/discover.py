@@ -33,7 +33,7 @@ async def scan():
         bt_addrs.append(d)
         device_name.append(c)
 
-    df = pd.DataFrame(list(zip(near_device, device_name)),
-                        columns=['near_device', 'device_name'])
+    df = pd.DataFrame(list(zip(bt_addrs, device_name)),
+                        columns=['bt_addrs', 'device_name'])
     
     return bt_addrs,device_name
