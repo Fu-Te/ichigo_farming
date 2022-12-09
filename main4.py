@@ -78,8 +78,11 @@ start_discoverable()
 # 送受信の実行
 
 receive_data_list.append(l2cap_server())
+time.sleep(180)
 receive_data_list.append(l2cap_server())
+time.sleep(180)
 receive_data_list.append(l2cap_server())
+time.sleep(180)
 SEND(tanmatsu_bt_addrs,send_data_list)
 # 署名の検証
 count = 0
