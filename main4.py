@@ -21,7 +21,7 @@ from send_and_receive import SEND
 # 設定用
 
 # ビーコンのアドレス一覧(自分の端末以外のアドレスを指定)
-json_file = open('settings.json', 'r')
+json_file = open('settings4.json', 'r')
 json_data = json.load(json_file)
 
 bt_addrs = []
