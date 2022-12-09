@@ -78,8 +78,11 @@ start_discoverable()
 # 送受信の実行
 
 receive_data_list.append(l2cap_server())
+
 SEND()
+
 receive_data_list.append(l2cap_server())
+
 receive_data_list.append(l2cap_server())
 
 # 署名の検証
