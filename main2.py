@@ -96,6 +96,8 @@ receive_data_list.append(l2cap_server())
 # 署名の検証
 count = 0
 #それぞれの端末の情報について署名を検証し，結果をリストに格納する．
+# [[df, public_key, signature],[df, public_key, signature]]のような構成になる．
+
 for i in receive_data_list:
     result = judge_signature(i[2], i[0], i[1])
     receive_data_list[count].append(result)
