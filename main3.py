@@ -17,6 +17,9 @@ from send_and_receive import SEND
 
 import time
 
+from pandas_d_encode import pandas_decode
+from pandas_d_encode import pandas_encode
+
 #from ble.l2cap_server import l2cap_server
 #from ble.l2cap_client import l2cap_client
 
@@ -54,6 +57,8 @@ df = pd.DataFrame(list(zip(bt_addrs, device_name)),
                         columns=['bt_addrs', 'device_name'])
 df = delete_excess_data(df)
 
+bytes_df = pandas_encode(df)
+
 print(df)
 
 
@@ -61,7 +66,7 @@ print(df)
 signature = make_signature(secret_key, df)
 
 # 送信用データの作成
-send_data_list.append(df)
+send_data_list.append(bytes_df)
 send_data_list.append(public_key)
 send_data_list.append(signature)
 

@@ -1,5 +1,6 @@
 from http import server
 import bluetooth
+from pandas_d_encode import pandas_decode
 
 
 def l2cap_server():
@@ -46,6 +47,11 @@ def l2cap_server():
 
         client_sock.close()
         data = data.decode()
+        
+        bytes_df = pandas_decode(data[0])
+        
+        data[0] = bytes_df
+        
         print(f'データを受信しました:{data}')
         print('connection closed')
         return data
