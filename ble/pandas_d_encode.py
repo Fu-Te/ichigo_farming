@@ -1,3 +1,5 @@
+import io
+
 
 def pandas_encode(df):
     """pandas_encode
@@ -12,8 +14,15 @@ def pandas_encode(df):
     バイト形式のDataFrame
     
     """
+    towrite = io.BytesIO()
+    df.to_excel(towrite)
+    towrite.seek(0)
+    bytes_df = towrite.getvalue()
     
-def pandas_decode(df):
+    return bytes_df
+    
+    
+def pandas_decode(bytes_df):
     """pandas_decode
     
     Parameters
