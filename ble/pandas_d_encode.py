@@ -1,5 +1,6 @@
 import io
-
+import openpyxl
+import pandas as pd
 
 def pandas_encode(df):
     """pandas_encode
@@ -36,3 +37,7 @@ def pandas_decode(bytes_df):
     Args:
         df (_type_): _description_
     """
+    data = io.BytesIO(bytes_df)
+    df = pd.read_csv(data)
+    
+    return df
