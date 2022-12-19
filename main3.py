@@ -59,7 +59,7 @@ df = delete_excess_data(df)
 
 bytes_df = pandas_encode(df)
 
-print(df)
+
 
 
 # 署名の作成
@@ -70,7 +70,7 @@ send_data_list.append(bytes_df)
 send_data_list.append(public_key)
 send_data_list.append(signature)
 
-print(send_data_list)
+
 
 
 #↑まで完成
