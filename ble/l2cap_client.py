@@ -34,14 +34,13 @@ def l2cap_client(bt_addr, data):
 
     print(f'trying to connect to {bt_addr} on PSM 0x{port}')
     
-    #dataをリストから変換
+
     
-    byte_data = data.encode()
 
     sock.connect((bt_addr, port))
 
 
-    sock.send(byte_data)
+    sock.send(data)
     #data = sock.recv(1024)
     print(f'送信完了')
 
