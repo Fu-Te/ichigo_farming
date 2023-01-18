@@ -11,6 +11,12 @@ Welcome to BLE_BlockChain's documentation!
    :caption: Contents:
 
 
+   modules
+   ble
+   cipher
+   csv_to_web
+   blockchain
+
 
 Indices and tables
 ==================

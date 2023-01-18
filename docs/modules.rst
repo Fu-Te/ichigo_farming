@@ -6,6 +6,7 @@ BLE_Blockchain
 
    delete_excess_data
    install_package
+   main
    main1
    main2
    main3
