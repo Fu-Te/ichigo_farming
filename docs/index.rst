@@ -10,12 +10,11 @@ Welcome to BLE_BlockChain's documentation!
    :maxdepth: 2
    :caption: Contents:
 
-
    modules
-   ble
-   cipher
-   csv_to_web
-   blockchain
+   cipher/*pip
+   ble/*
+   csv_to_web/*
+   blockchain/*
 
 
 Indices and tables
