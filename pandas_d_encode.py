@@ -15,10 +15,7 @@ def pandas_encode(df):
     バイト形式のDataFrame
     
     """
-    towrite = io.BytesIO()
-    df.to_excel(towrite)
-    towrite.seek(0)
-    bytes_df = towrite.getvalue()
+    bytes_df = df.to_pickle()
     
     return bytes_df
     
@@ -37,7 +34,6 @@ def pandas_decode(bytes_df):
     Args:
         df (_type_): _description_
     """
-    data = io.BytesIO(bytes_df)
-    df = pd.read_csv(data)
+    df = pd.read_pickle(bytes_df)
     
     return df

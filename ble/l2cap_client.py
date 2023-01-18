@@ -39,8 +39,11 @@ def l2cap_client(bt_addr, data):
 
     sock.connect((bt_addr, port))
 
-
-    sock.send(data)
+    #リストの中身をバイトに変換する．
+    send_data_list_bytes =  [s.encode() for s in data]
+    
+    
+    sock.send(send_data_list_bytes)
     #data = sock.recv(1024)
     print(f'送信完了')
 
