@@ -12,7 +12,4 @@ def start_discoverable():
 
 
     """
-    subprocess.run(['sudo','bluetoothctl','discoverable','on'])
-
-
-
+    subprocess.run(["sudo", "bluetoothctl", "discoverable", "on"])

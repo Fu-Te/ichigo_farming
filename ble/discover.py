@@ -1,7 +1,7 @@
 # addressを探すためのコード
 import asyncio
-import pandas as pd
 
+import pandas as pd
 from bleak import BleakScanner
 
 
@@ -29,11 +29,12 @@ async def scan():
     for d in devices:
         raw_data.append(d)
 
-        d, c = str(d).split(': ')
+        d, c = str(d).split(": ")
         bt_addrs.append(d)
         device_name.append(c)
 
-    df = pd.DataFrame(list(zip(bt_addrs, device_name)),
-                        columns=['bt_addrs', 'device_name'])
-    
-    return bt_addrs,device_name
+    df = pd.DataFrame(
+        list(zip(bt_addrs, device_name)), columns=["bt_addrs", "device_name"]
+    )
+
+    return bt_addrs, device_name

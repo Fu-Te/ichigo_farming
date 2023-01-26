@@ -1,4 +1,5 @@
 import sys
+
 import bluetooth
 
 
@@ -24,28 +25,23 @@ def l2cap_client(bt_addr, data):
     タイムアウトを設定したい．一定時間立っても接続できなかった場合はエラーを出るように修正必須
 
     """
-    if sys.version < '3':
+    if sys.version < "3":
         input = raw_input
 
     sock = bluetooth.BluetoothSocket(bluetooth.L2CAP)
 
-
     port = 0x1001
 
-    print(f'trying to connect to {bt_addr} on PSM 0x{port}')
-    
-
-    
+    print(f"trying to connect to {bt_addr} on PSM 0x{port}")
 
     sock.connect((bt_addr, port))
 
-    #リストの中身をバイトに変換する．
-    send_data_list_bytes =  [s.encode() for s in data]
-    
-    
+    # リストの中身をバイトに変換する．
+    send_data_list_bytes = [s.encode() for s in data]
+
     sock.send(send_data_list_bytes)
-    #data = sock.recv(1024)
-    print(f'送信完了')
+    # data = sock.recv(1024)
+    print(f"送信完了")
 
     sock.close()
 

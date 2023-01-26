@@ -1,8 +1,8 @@
-from ecdsa import SigningKey
-from ecdsa import VerifyingKey
-from ecdsa import SECP256k1
 import io
+
 import openpyxl
+from ecdsa import SECP256k1, SigningKey, VerifyingKey
+
 
 def make_key():
     """
@@ -44,14 +44,13 @@ def make_signature(secret_key, df):
     ----------
 
     """
-    
-    #dfをbytes形式に変換
+
+    # dfをbytes形式に変換
     towrite = io.BytesIO()
     df.to_excel(towrite)
     towrite.seek(0)
     df = towrite.getvalue()
-    
-    
+
     signature = secret_key.sign(df)
     return signature
 
@@ -79,18 +78,18 @@ def judge_signature(signature, df, public_key):
     ---------
 
     """
-    
-    #dfをbytes形式に変換
+
+    # dfをbytes形式に変換
     towrite = io.BytesIO()
     df.to_excel(towrite)
     towrite.seek(0)
     df = towrite.getvalue()
-    
-    #TorF
+
+    # TorF
     result = public_key.verify(signature, df)
     if result == True:
-        print('署名が正しいです')
+        print("署名が正しいです")
         return result
     else:
-        print('署名が正しくありません．')
+        print("署名が正しくありません．")
         return result
