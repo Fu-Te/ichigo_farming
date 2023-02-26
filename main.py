@@ -49,7 +49,9 @@ secret_key, public_key = make_key()
 # 他の端末に送信する情報の作成
 # 端末のスキャン
 bt_addrs, device_name = asyncio.run(scan())
-df = pd.DataFrame(list(zip(bt_addrs, device_name)), columns=["bt_addrs", "device_name"])
+df = pd.DataFrame(
+    list(zip(bt_addrs, device_name)), columns=["bt_addrs", "device_name"]
+)
 df = delete_excess_data(df)
 
 bytes_df = pandas_encode(df)

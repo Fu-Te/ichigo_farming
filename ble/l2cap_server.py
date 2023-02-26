@@ -21,18 +21,18 @@ def l2cap_server():
 
     """
     server_sock = bluetooth.BluetoothSocket(bluetooth.L2CAP)
-    server_sock.bind(('', 0x1001))
+    server_sock.bind(("", 0x1001))
     server_sock.listen(1)
 
     while True:
-        print('送信されてくるデータを待ってます')
+        print("送信されてくるデータを待ってます")
         client_sock, address = server_sock.accept()
-        print(f'接続を確認{str(address)}')
+        print(f"接続を確認{str(address)}")
 
-        print('データを受信中')
+        print("データを受信中")
 
         total = 0
-        total_data = ''
+        total_data = ""
         while True:
             try:
                 data = client_sock.recv(1024)
@@ -44,24 +44,22 @@ def l2cap_server():
 
             total += len(data)
 
-            print(f'total byte read:{total}')
-            print(f'data is: {data}')
+            print(f"total byte read:{total}")
+            print(f"data is: {data}")
 
         client_sock.close()
-        
-        
-        
-        print(f'データを受信しました:{data}')
-        print('connection closed')
-        
+
+        print(f"データを受信しました:{data}")
+        print("connection closed")
+
         data = [s.decode() for s in data]
-        
+
         return data
 
     server_sock.close()
 
 
-def l2cap_server_main(receive_data_list,len_of_device):
+def l2cap_server_main(receive_data_list, len_of_device):
     count = 0
     while True:
         data = l2cap_server()
@@ -69,4 +67,3 @@ def l2cap_server_main(receive_data_list,len_of_device):
         count = count + 1
         if count == len_of_device:
             break
-

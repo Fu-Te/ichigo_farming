@@ -9,15 +9,21 @@ from ble.l2cap_client import l2cap_client
 
 # ラズパイそれぞれに送信する関数
 def toTwo(bt_addrs, send_data_list):
-    client_thread = threading.Thread(target=l2cap_client(bt_addrs[0], send_data_list))
+    client_thread = threading.Thread(
+        target=l2cap_client(bt_addrs[0], send_data_list)
+    )
 
 
 def toThree(bt_addrs, send_data_list):
-    client_thread = threading.Thread(target=l2cap_client(bt_addrs[1], send_data_list))
+    client_thread = threading.Thread(
+        target=l2cap_client(bt_addrs[1], send_data_list)
+    )
 
 
 def toFour(bt_addrs, send_data_list):
-    client_thread = threading.Thread(target=l2cap_client(bt_addrs[2], send_data_list))
+    client_thread = threading.Thread(
+        target=l2cap_client(bt_addrs[2], send_data_list)
+    )
 
 
 # 送信はまとめて

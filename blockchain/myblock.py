@@ -19,9 +19,7 @@ class MyBlockChain(object):
         if len(self.chain) > 0:
             prev_hash = self.chain[-1]["block_header"]["tran_hash"]
         else:
-            prev_hash = (
-                "747bc42088cf0b3915982af289189e8f14d3325a7d594bc2d30a7014a536cb13"
-            )
+            prev_hash = "747bc42088cf0b3915982af289189e8f14d3325a7d594bc2d30a7014a536cb13"
 
         # トランザクションを元にブロックを生成して、チェーンに接続する
         new_block = {
@@ -60,14 +58,15 @@ class MyBlockChain(object):
         if block_index == 0:
             print(json.dumps(self.chain, sort_keys=False, indent=2))
         else:
-            print(json.dumps(self.chain[block_index], sort_keys=False, indent=2))
+            print(
+                json.dumps(self.chain[block_index], sort_keys=False, indent=2)
+            )
 
 
 bc = MyBlockChain()
 
 
 def test_make_blockchain():
-
     df1 = pd.read_csv("sample1.csv")
     df2 = pd.read_csv("sample2.csv")
     df3 = pd.read_csv("sample3.csv")
